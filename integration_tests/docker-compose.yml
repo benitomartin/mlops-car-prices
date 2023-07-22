@@ -1,0 +1,10 @@
+version: '3'
+services:
+  my-app:
+    build: .
+    ports:
+      - "9696:9696"
+    volumes:
+      - C:\Users\bmart\OneDrive\11_MLOps\mlops-car-prices\data:/app/data
+    environment:
+      - FLASK_ENV=production
