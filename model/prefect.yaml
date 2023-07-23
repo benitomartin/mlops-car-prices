@@ -1,0 +1,18 @@
+# Welcome to your prefect.yaml file! You can you this file for storing and managing
+# configuration for deploying your flows. We recommend committing this file to source
+# control along with your flow code.
+
+# Generic metadata about this project
+name: model
+prefect-version: 2.10.21
+
+# build section allows you to manage and build docker images
+build:
+
+# push section allows you to manage if and how this project is uploaded to remote locations
+push:
+
+# pull section allows you to provide instructions for cloning this project in remote locations
+pull:
+- prefect.projects.steps.set_working_directory:
+    directory: C:\Users\bmart\OneDrive\11_MLOps\mlops-car-prices\model

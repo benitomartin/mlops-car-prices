@@ -119,7 +119,9 @@ env_vars.py
 S3 Bucket.docx
 notebooks
 src
-remove_env_var.py
+add_aws_env.py
+terraform
+terraform/terraform.docx
 
 
 

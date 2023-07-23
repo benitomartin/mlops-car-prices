@@ -1,0 +1,102 @@
+## docker-compose.yml
+
+
+# version of the Docker Compose file format being used. In this case, it's version 3.7.
+version: '3.7'
+
+# Place where all artifacts will be stored
+volumes: 
+  grafana_data: {}
+
+# These networks can be used to connect containers together
+networks:
+  front-tier:
+  back-tier:
+
+
+services:
+  # The db service is based on the postgres image. 
+  # It sets the POSTGRES_PASSWORD environment variable to "example" 
+  #   and maps the container's port 5432 to the host's port 5432. 
+  # It is connected to the back-tier network.
+  db:
+    image: postgres
+    restart: always
+    # env_file:
+    #   - ../../.env
+    environment:
+      POSTGRES_PASSWORD: grafanapass
+    ports:
+      - "5432:5432"
+    networks:
+      - back-tier
+
+  # The adminer service is based on the adminer image. 
+  # It exposes the container's port 8080 to the host's port 8080. 
+  # It is connected to both the back-tier and front-tier networks.      
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    networks:
+      - back-tier
+      - front-tier
+
+# The grafana service is based on the grafana/grafana image. 
+# It sets the user to "472" for security purposes. 
+# It maps the container's port 3000 to the host's port 3000. 
+# It also mounts three volumes, binding specific files and directories 
+#   on the host to corresponding paths inside the container. 
+# The service is connected to both the back-tier and front-tier networks.
+# The restart: always option ensures that all services will be 
+#   automatically restarted if they stop unexpectedly.
+  grafana:
+    image: grafana/grafana
+    user: "472"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./config/grafana_datasources.yaml:/etc/grafana/provisioning/datasources/datasource.yaml:ro
+      - ./config/grafana_dashboards.yaml:/etc/grafana/provisioning/dashboards/dashboards.yaml:ro
+      - ./dashboards:/opt/grafana/dashboards
+
+    networks:
+      - back-tier
+      - front-tier
+    restart: always
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

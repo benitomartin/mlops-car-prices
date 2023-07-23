@@ -17,8 +17,9 @@
 
     ```bash
     conda install -c conda-forge python-dotenv
+    conda install -n myenv setuptools wheel
 
-4. To execute the setup.py script and install the project dependencies incl. requirements.txt run:
+4. Execute the setup.py script and install the project dependencies incl. requirements.txt (if you face an error with `python-dotenv`, use `BASE_DIR` in the `setup.py` as a string).
 
     ```bash
     pip install .

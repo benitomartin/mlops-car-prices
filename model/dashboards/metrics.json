@@ -1,0 +1,280 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "PCC52D03280B7034C"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "fillOpacity": 80,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineWidth": 1,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 15,
+          "w": 23,
+          "x": 0,
+          "y": 0
+        },
+        "id": 2,
+        "options": {
+          "barRadius": 0,
+          "barWidth": 0.97,
+          "fullHighlight": false,
+          "groupWidth": 0.7,
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "right",
+            "showLegend": true
+          },
+          "orientation": "auto",
+          "showValue": "always",
+          "stacking": "none",
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          },
+          "xTickLabelRotation": 0,
+          "xTickLabelSpacing": 0
+        },
+        "pluginVersion": "10.0.2",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "PCC52D03280B7034C"
+            },
+            "editorMode": "builder",
+            "format": "table",
+            "rawSql": "SELECT \"MSE\", \"Model Name\" FROM evaluation_results ORDER BY \"R_2\" LIMIT 50 ",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "\"MSE\"",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                },
+                {
+                  "parameters": [
+                    {
+                      "name": "\"Model Name\"",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50,
+              "orderBy": {
+                "property": {
+                  "name": [
+                    "\"R_2\""
+                  ],
+                  "type": "string"
+                },
+                "type": "property"
+              }
+            },
+            "table": "evaluation_results"
+          }
+        ],
+        "title": "MSE",
+        "type": "barchart"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "PCC52D03280B7034C"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-GrYlRd"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 23,
+          "x": 0,
+          "y": 15
+        },
+        "id": 1,
+        "options": {
+          "displayMode": "basic",
+          "minVizHeight": 10,
+          "minVizWidth": 0,
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [],
+            "fields": "",
+            "values": true
+          },
+          "showUnfilled": true,
+          "valueMode": "color"
+        },
+        "pluginVersion": "10.0.2",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "PCC52D03280B7034C"
+            },
+            "editorMode": "builder",
+            "format": "table",
+            "rawSql": "SELECT \"R_2\", \"Model Name\" FROM evaluation_results ORDER BY \"R_2\" DESC LIMIT 50 ",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "\"R_2\"",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                },
+                {
+                  "parameters": [
+                    {
+                      "name": "\"Model Name\"",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50,
+              "orderBy": {
+                "property": {
+                  "name": "\"R_2\"",
+                  "type": "string"
+                },
+                "type": "property"
+              },
+              "orderByDirection": "DESC"
+            },
+            "table": "evaluation_results"
+          }
+        ],
+        "title": "R2",
+        "type": "bargauge"
+      }
+    ],
+    "refresh": "",
+    "schemaVersion": 38,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "Matrics",
+    "uid": "ac8964f8-6a51-42be-9b35-adaf2b40efef",
+    "version": 1,
+    "weekStart": ""
+  }

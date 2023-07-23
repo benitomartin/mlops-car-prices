@@ -1,0 +1,42 @@
+## grafana_datasources.yaml
+
+# config file version
+apiVersion: 1
+
+# list of datasources to insert/update
+# available in the database
+datasources:
+  - name: PostgreSQL
+    type: postgres
+    access: proxy
+    url: db.:5432 # Same as in docker-compose
+    database: carsdb
+    user: postgres
+    secureJsonData:
+      password: "grafanapass" # Same as in docker-compose
+    jsonData:
+      sslmode: 'disable'
+
+  
+# The apiVersion field indicates the version of the 
+#   Grafana provisioning configuration API being used. 
+#   In this case, it's version 1.
+
+
+# The datasources section defines a list of datasources to be provisioned in Grafana. 
+#    In this case, there is one datasource defined with the following properties:
+
+#      - name: The name of the datasource, in this case, "PostgreSQL".
+#      - type: The type of the datasource, specified as "postgres".
+#      - access: The access mode for the datasource, set to "proxy" to access the database directly.
+#      - url: The URL or hostname of the database, specified as "db.:5432". 
+#              The hostname "db" corresponds to the service name defined in the Docker Compose file, 
+#               and port 5432 is the default PostgreSQL port.
+#      - database: The name of the database to connect to, set to "test".
+#      - user: The username to use for authentication, set to "postgres".
+#      - secureJsonData: A dictionary of secure JSON data, in this case, 
+#                         containing the password for the user. The password is set to "example".
+#      - jsonData: Additional JSON data specific to the datasource. 
+#                         In this case, it sets the SSL mode to "disable" for the PostgreSQL connection.
+
+# This configuration file allows Grafana to automatically configure the PostgreSQL datasource with the specified connection details and credentials.

@@ -6,3 +6,6 @@ req:
 
 test:
 	pytest -s .\tests\
+
+# pylint:
+# 	pylint --recursive=y .
