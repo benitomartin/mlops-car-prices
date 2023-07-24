@@ -1,18 +1,19 @@
 # Modeling
 
-This folder contains all files to train, deploy, monitor the model and make predictions:
+This folder contains all files and folders to train, deploy, monitor the model, and make predictions:
 
 - `preprocess.py`: the functions to preprocess the data
 - `prefect_s3_bucket_block.py`: the functions to create a block in prefect UI
 - `create_db.py`: the functions to create the DB in Grafana and Adminer:
 - `train.py`: the functions to train the model with AWS, Prefect and MLflow, and to monitor with Grafana and Adminer
 
-  - **Adminer**: This service is based on the adminer Docker image, which provides a web-based database management tool
+  - **Adminer**: This service is based on the Adminer Docker image, which provides a web-based database management tool
 
   - **Grafana**: This service is based on the grafana/grafana Docker image, which sets up the Grafana monitoring and visualization platform
 
+- `trained_models`: this fodler contains the models trained after running `train.py`
 - `config`: this folder contains the file `grafana_datasources.yaml` to acces the data and `grafana_dashboards.yaml` to save dashboards
-- `dashboards`: use this folder to save the dashboards created in Gafana
+- `dashboards`: use this folder to save the dashboards created in Grafana
 - `docker-compose.yml`: the Docker set-up for monitoring
 - `predict.py`: the functions to run the Flask App
 - `test.py`: the functions to predict using the selected model
@@ -88,7 +89,7 @@ The model will be deployed in Prefect.
     mlflow server -h 0.0.0.0 -p 5000 --backend-store-uri postgresql://${DB_USER}:${DB_PASSWORD}@${DB_ENDPOINT}:5432/${DB_NAME} --default-artifact-root s3://${BUCKET_NAME}
     ```
 
-Make sure to have in the `.env` the Public IPv4 DNS of your instance. It shall be something like this (add the 5000 and copy it in the browser). You shall be able to see the MLflow UI:
+Make sure to have in the `.env` the Public IPv4 DNS of your instance (each time you stop and restart the instance again, the DNS changes). It shall be something like this (add the 5000 and copy it in the browser). You shall be able to see the MLflow UI:
 
    ```bash
    AWS_URI=http://ec2-44-174-44-227.compute-1.amazonaws.com:5000/
