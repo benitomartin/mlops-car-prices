@@ -1,5 +1,7 @@
 # MLOps Project Cars Price Prediction
 
+![car](https://github.com/benitomartin/templates/assets/116911431/d5d98b26-f096-42bf-b97d-d2fefdebe555)
+
 ## Project Set Up
 
 1. Clone the repo:

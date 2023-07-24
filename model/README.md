@@ -32,7 +32,7 @@ This folder contains all files to train, deploy, monitor the model and make pred
 
 The model will be deployed in Prefect.
 
-- `prefect_s3_bucket_block.py`: run this file to create a block in prefect UI (Make sure to run `prefect server start` in a terminal before). The previously created Bucket and your AWS credentials must be saved in the `.env` file before running the file
+- `prefect_s3_bucket_block.py`: run this file to create a block in prefect UI (Make sure to run `prefect server sclearbe saved in the `.env` file before running the file
 
     ```bash
     python prefect_s3_bucket_block.py
