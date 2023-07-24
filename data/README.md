@@ -1,4 +1,4 @@
-# MLOps Project Car Prices Prediction
+# Data
 
 The dataset used has been downloaded from [Kaggle](https://www.kaggle.com/datasets/hellbuoy/car-price-prediction).
 
