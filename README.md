@@ -4,7 +4,7 @@
 
 This project is currently being developed as part [MLOps Zoomcamp](https://github.com/DataTalksClub/mlops-zoomcamp) course provided by [DataTalks](https://datatalks.club/).Club.
 
-The dataset used has been downloaded from [Kaggle](https://www.kaggle.com/datasets/hellbuoy/car-price-prediction) and a preliminary data analysis was performed (see `notebooks` folder), to get some insights for the further project development.
+The dataset used has been downloaded from [Kaggle](https://www.kaggle.com/datasets/hellbuoy/car-price-prediction) and a preliminary data analysis was performed (see [notebooks](https://github.com/benitomartin/mlops-car-prices/tree/main/notebooks) folder), to get some insights for the further project development.
 
 Below you can find some instructions to understand the project content. Feel free to close this repo :wink:
 
