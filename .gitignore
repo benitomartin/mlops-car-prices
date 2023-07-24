@@ -122,6 +122,7 @@ src
 add_aws_env.py
 terraform
 terraform/terraform.docx
+integration_tests/.env
 
 
 

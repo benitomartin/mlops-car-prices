@@ -1,6 +1,6 @@
 # Modelling
 
-This folder contains all files to train, deploy, monitor and make predictions:
+This folder contains all files to train, deploy and monitor the model:
 
 - `preprocess.py`: the functions to preprocess the data
 - `train.py`: the functions to train the model with AWS, Prefect and MLflow
@@ -22,7 +22,7 @@ This folder contains all files to train, deploy, monitor and make predictions:
 
 ## AWS Set Up
 
-- Create a EC2 Instance, a S3 Bucker and a RDS Instance. Follow this video for the set up [link](https://www.youtube.com/watch?v=1ykg4YmbFVA&list=PL3MmuxUbc_hIUISrluw_A7wDSmfOhErJK&index=16&t=1383s)
+- Create a EC2 Instance, a S3 Bucker and a RDS Instance. Follow this video for the set up [link](https://www.youtube.com/watch?v=1ykg4YmbFVA&list=PL3MmuxUbc_hIUISrluw_A7wDSmfOhErJK&index=16&t=1383s). The configuration data for the RDS will be later used to run MLflow
 
 - Create a IAM user and access key. This must be saved in your local computer in the credentails file. This is normally located here C:\Users\username\.aws
 
@@ -32,7 +32,7 @@ This folder contains all files to train, deploy, monitor and make predictions:
 
 The model will be deployed in Prefect.
 
-- `prefect_s3_bucket_block.py`: run this file to create a block in prefect UI (Make sure to run `prefect server start` in a terminal before). The previously created Bucket and your AWS credential must be saved in the `.env` file before running the file
+- `prefect_s3_bucket_block.py`: run this file to create a block in prefect UI (Make sure to run `prefect server start` in a terminal before). The previously created Bucket and your AWS credentials must be saved in the `.env` file before running the file
 
     ```bash
     python prefect_s3_bucket_block.py
@@ -50,13 +50,13 @@ The model will be deployed in Prefect.
     prefect block type ls
     ```
 
-- Push the blocks to the the server, so we can use them:
+- Push the blocks to the server, so we can use them:
 
     ```bash
     prefect block register -m prefect_aws
     ```
 
-- Initialilze your prefect project.This will create the following files: `.prefectignore`, `prefect.yaml`, `.prefect/`
+- Initialilze your prefect project. This will create the following files: `.prefectignore`, `prefect.yaml`, `.prefect/`
 
     ```bash
     prefect project init
@@ -80,15 +80,15 @@ The model will be deployed in Prefect.
         directory: C:\Users\path\to\mlops-car-prices\model
     ```
 
-- Create a Work Pool in prefect UI (any name and save the name in `.env`) and select "Local Subprocess"
+- Create a Work Pool in Prefect UI (any name and save the name in `.env`) and select "Local Subprocess"
 
-- Start your AWS EC2 instance and connect to the AWS CLI. Add your aws credentials before running aws configure and run this code:
+- Start your AWS EC2 instance and connect to the AWS CLI. Add your aws credentials before running aws configure and run this code using the database credentials created during the AWS set up. You can add the data in the `.env` file:
 
    ```bash
     mlflow server -h 0.0.0.0 -p 5000 --backend-store-uri postgresql://${DB_USER}:${DB_PASSWORD}@${DB_ENDPOINT}:5432/${DB_NAME} --default-artifact-root s3://${BUCKET_NAME}
     ```
 
-Make sure to have in the `.env` the Public IPv4 DNS of your instance. It shall be something like this (add the 5000 and copy it in the browser). You shall be able to see the MLflow UI
+Make sure to have in the `.env` the Public IPv4 DNS of your instance. It shall be something like this (add the 5000 and copy it in the browser). You shall be able to see the MLflow UI:
 
    ```bash
    AWS_URI=http://ec2-44-174-44-227.compute-1.amazonaws.com:5000/
@@ -97,7 +97,7 @@ Make sure to have in the `.env` the Public IPv4 DNS of your instance. It shall b
 - Start Prefect in a terminal:
 
    ```bash
-   perfect server start:
+   perfect server start
     ```
 
 - Start Docker Desktop and build the image (to stop it use  `docker-compose down`):
@@ -106,25 +106,25 @@ Make sure to have in the `.env` the Public IPv4 DNS of your instance. It shall b
    docker-compose up --build
    ```
 
-- Train and deploy the model, giving a name for the run (any name) and the created Work Pool. Look for the run in :
+- Train and deploy the model, giving a name for the run (any name) and the created Work Pool. Look for the run in the Prrefect UI:
 
    ```bash
     prefect deploy train.py:main_flow -n any-name -p ${WORK_POOL}
     ```
 
-- Start the worker in a new terminal. The training will start. 
+- Start the worker in a new terminal::
 
     ```bash
      prefect worker start -p ${WORK_POOL} -t process
     ``` 
 
-- To run the deployment, go to the Prefect UI and under the run click "quick run". In the terminal, you will be asked to give an experiment name and if you want to replace or append the database (if already exists).The deployment will be shown in the prefect UI and in the terminal
+- To run the deployment, go to the Prefect UI and under the run click **quick run**. In the terminal, you will be asked to give an experiment name and if you want to replace or append the database (if already exists).The deployment will be shown in the prefect UI and in the terminal
 
 - Once the training has finished, you will see some print outs with the results in the terminal.
 
 - In MLFlow and Prefect UI you can check the model and all the logs
 
-- For monitoring, login in Grafana and Adminer to see the results there. 
+- For monitoring, login in Grafana and Adminer to see the results there and create visualizations: 
 
    - Grafana  http://localhost:3000/: you need to login the first time with "admin" as username and password.
 
@@ -136,6 +136,6 @@ Make sure to have in the `.env` the Public IPv4 DNS of your instance. It shall b
       - Password: the password in `grafana_datasources.yaml`
       - Database: the database in `grafana_datasources.yaml`
 
-Make sure in Grafana, under Data Sources, that you add PostgreSQL. Then create a dashboard/visualization and select PostgreSQL. The created table shall be visible there.
+Make sure in Grafana, under Data Sources, that you add PostgreSQL. Then click in create a dashboard/visualization and select PostgreSQL. The created table shall be visible there.
 
-Once you create a visualization, save it there and copy the JSON file in the dashboard folder. If you stop the image (`docker-compose down`) and run again`docker-compose up`, after login in Grafana, you should be able to see the dashboard again.
+Once you create a visualization, save it there and copy the corresponding JSON file in the dashboard folder. If you stop the image (`docker-compose down`) and run again`docker-compose up`, after login in Grafana, you should be able to see the dashboard again.

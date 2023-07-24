@@ -11,14 +11,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the current directory contents (including the Flask app) into the container at /app
 COPY . /app/
 
-# Copy the integration test file into the container at /app
-COPY test_integration.py /app/
+# Expose the port on which Gunicorn will run (you can change this if desired)
+EXPOSE 8000
 
-# Expose the port on which Gunicorn will rsun (you can change this if desired)
-EXPOSE 9696
 
 # Set the entrypoint to run Gunicorn with the Flask app
-ENTRYPOINT ["gunicorn", "--bind", "0.0.0.0:9696", "predict_integration:app"]
-
-
+ENTRYPOINT ["gunicorn", "--bind", "0.0.0.0:8000", "predict:app"]
 

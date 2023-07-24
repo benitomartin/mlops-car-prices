@@ -1,19 +1,34 @@
-## predict.py file
-
-import joblib
+## predict_integration.py file
+import os
+import logging
 import pandas as pd
 from flask import Flask, request, jsonify
+import mlflow
+from dotenv import load_dotenv
 
 
-# Replace 'GradientBoostingRegressor_best_model.joblib' with the actual path to your saved model file
-model = joblib.load('GradientBoostingRegressor_best_model.joblib')
+# Load environmental variables
+load_dotenv()
 
-import logging
+# # Get the RUN_ID after running orchestrate_s3.py and save it in .env
+RUN_ID = os.getenv("RUN_ID")
+BUCKET_NAME = os.getenv("BUCKET_NAME")
+EXPERIMENT_ID = os.getenv("EXPERIMENT_ID")
+# TEST_DATA_PATH = os.getenv("TEST_DATA_PATH")
+
+# # Path to the model
+logged_model = f's3://{BUCKET_NAME}/{EXPERIMENT_ID}/{RUN_ID}/artifacts/models_mlflow'
+
+
+# Load model as a PyFuncModel.
+model = mlflow.pyfunc.load_model(logged_model)
+
+
 logging.getLogger().setLevel(logging.INFO)
 
 def clean_data(data_path: str) -> pd.DataFrame:
     # Read the CSV file into a DataFrame
-    df = pd.read_csv('/app/data/test_sample.csv')
+    df = pd.read_csv(data_path)
     
     # Drop unnecessary columns 'car_ID' and 'CarName'
     df.drop(columns=['car_ID', 'CarName'], inplace=True)
@@ -64,6 +79,7 @@ def predict_price():
         "prediction": y_pred.tolist()  # Convert NumPy array to a list for JSON serialization
     }
 
+    # Log the prediction
     logging.info("Response: %s", prediction)
 
     # Return the response as JSON

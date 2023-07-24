@@ -2,18 +2,24 @@
 
 import requests
 import pytest
+from dotenv import load_dotenv
+import os
 
+
+# Load environmental variables
+load_dotenv()
 
 
 # URL of the Flask API endpoint
 url = 'http://localhost:9696/predict'
 
+TEST_DATA_PATH = os.getenv("TEST_DATA_PATH")
+
 
 def test_prediction():
     
     # The file path of the CSV data you want to use for prediction
-    data_path = "/app/data/test_sample.csv"
-    # logger.info("TEST_DATA_PATH: %s", data_path)
+    data_path = f'/app/{TEST_DATA_PATH}'
 
     print(f'TEST_DATA_PATH: {data_path}')  # Add this line to print the value
 
@@ -40,4 +46,4 @@ def test_prediction():
         # If any other request-related exception occurred, handle the exception
         pytest.fail(f"An error occurred: {err}")
 
-    
+

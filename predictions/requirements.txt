@@ -22,6 +22,11 @@ mlflow==2.5.0
 # AWS SDK for Python - used for interacting with AWS services
 boto3==1.28.2
 
+# PostgreSQL 
+psycopg==3.1.9
+psycopg_binary==3.1.9
+psycopg2_binary==2.9.6
+
 # Prefect
 prefect==2.10.21
 prefect-aws==0.3.5
