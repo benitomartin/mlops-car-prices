@@ -16,15 +16,8 @@ EXPERIMENT_ID = os.getenv("EXPERIMENT_ID")
 # # Path to the model
 logged_model = f's3://{BUCKET_NAME}/{EXPERIMENT_ID}/{RUN_ID}/artifacts/models_mlflow'
 
-
 # Load model as a PyFuncModel.
 model = mlflow.pyfunc.load_model(logged_model)
-
-# Get the data
-BASE_DIR = os.getenv("BASE_DIR")
-TEST_DATA_PATH = os.getenv("TEST_DATA_PATH")
-
-data_path = os.path.normpath(os.path.join(BASE_DIR, TEST_DATA_PATH))
 
 
 def clean_data(data_path: str) -> pd.DataFrame:

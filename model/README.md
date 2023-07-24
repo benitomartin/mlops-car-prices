@@ -1,6 +1,6 @@
 # Modelling
 
-This folder contains all files to train, deploy and monitor the model:
+This folder contains all files to train, deploy, monitor the model and make predictions:
 
 - `preprocess.py`: the functions to preprocess the data
 - `train.py`: the functions to train the model with AWS, Prefect and MLflow
@@ -12,15 +12,15 @@ This folder contains all files to train, deploy and monitor the model:
 - `dashboards`: use this folder to save the dashboards created in Gafana
 - `create_db.py`: the functions to create the DB in Grafana and Adminer:
 
-    - **Adminer**: This service is based on the adminer Docker image, which provides a web-based database management tool.
+  - **Adminer**: This service is based on the adminer Docker image, which provides a web-based database management tool.
 
-    - **Grafana**: This service is based on the grafana/grafana Docker image, which sets up the Grafana monitoring and visualization platform.
+  - **Grafana**: This service is based on the grafana/grafana Docker image, which sets up the Grafana monitoring and visualization platform.
 
 - `results_printouts`: a folder with some print outs of the results
 
-# Set Up
+## Set Up
 
-## AWS Set Up
+### AWS Set Up
 
 - Create a EC2 Instance, a S3 Bucker and a RDS Instance. Follow this video for the set up [link](https://www.youtube.com/watch?v=1ykg4YmbFVA&list=PL3MmuxUbc_hIUISrluw_A7wDSmfOhErJK&index=16&t=1383s). The configuration data for the RDS will be later used to run MLflow
 
@@ -28,7 +28,7 @@ This folder contains all files to train, deploy and monitor the model:
 
 - Add to the IAM user the following policy **AmazonS3FullAccess**
 
-## Deployment 
+### Deployment
 
 The model will be deployed in Prefect.
 
@@ -116,7 +116,7 @@ Make sure to have in the `.env` the Public IPv4 DNS of your instance. It shall b
 
     ```bash
      prefect worker start -p ${WORK_POOL} -t process
-    ``` 
+    ```
 
 - To run the deployment, go to the Prefect UI and under the run click **quick run**. In the terminal, you will be asked to give an experiment name and if you want to replace or append the database (if already exists).The deployment will be shown in the prefect UI and in the terminal
 
@@ -126,16 +126,41 @@ Make sure to have in the `.env` the Public IPv4 DNS of your instance. It shall b
 
 - For monitoring, login in Grafana and Adminer to see the results there and create visualizations: 
 
-   - Grafana  http://localhost:3000/: you need to login the first time with "admin" as username and password.
+  - Grafana  http://localhost:3000/: you need to login the first time with "admin" as username and password.
 
-
-   - Adminer http://localhost:8080/. Login with:
-      - System: `PostgreSQL`
-      - Server: db
-      - Username: the user in `grafana_datasources.yaml`
-      - Password: the password in `grafana_datasources.yaml`
-      - Database: the database in `grafana_datasources.yaml`
+  - Adminer http://localhost:8080/. Login with:
+    - System: `PostgreSQL`
+    - Server: db
+    - Username: the user in `grafana_datasources.yaml`
+    - Password: the password in `grafana_datasources.yaml`
+    - Database: the database in `grafana_datasources.yaml`
 
 Make sure in Grafana, under Data Sources, that you add PostgreSQL. Then click in create a dashboard/visualization and select PostgreSQL. The created table shall be visible there.
 
 Once you create a visualization, save it there and copy the corresponding JSON file in the dashboard folder. If you stop the image (`docker-compose down`) and run again`docker-compose up`, after login in Grafana, you should be able to see the dashboard again.
+
+### Prediction
+
+To run a prediction make sure the following variables after training the model are available in the `.env` file.
+
+```bash
+RUN_ID = os.getenv("RUN_ID")
+BUCKET_NAME = os.getenv("BUCKET_NAME")
+EXPERIMENT_ID = os.getenv("EXPERIMENT_ID")
+
+logged_model = f's3://{BUCKET_NAME}/{EXPERIMENT_ID}/{RUN_ID}/artifacts/models_mlflow'
+```
+
+After that run in one terminal:
+
+```bash
+ python .\predict.py
+```
+
+And in another terminal:
+
+```bash
+ python .\test.py
+ ```
+
+ The predictions will be shown in these last terminal. The folder integration test, contains the predictions integrated in Dockerfile and docker-compose.yml.
