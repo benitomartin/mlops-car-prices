@@ -24,7 +24,7 @@ This folder contains all files to train, deploy, monitor the model and make pred
 
 - Create a EC2 Instance, a S3 Bucker and a RDS Instance. Follow this video for the set up [link](https://www.youtube.com/watch?v=1ykg4YmbFVA&list=PL3MmuxUbc_hIUISrluw_A7wDSmfOhErJK&index=16&t=1383s). The configuration data for the RDS will be later used to run MLflow
 
-- Create a IAM user and access key. This must be saved in your local computer in the credentails file. This is normally located here C:\Users\username\~.aws
+- Create a IAM user and access key. This must be saved in your local computer in the credentails file. This is normally located here C:\\Users\\username\\~.aws
 
 - Add to the IAM user the following policy **AmazonS3FullAccess**
 
