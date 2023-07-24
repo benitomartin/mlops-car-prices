@@ -1,26 +1,26 @@
-# Modelling
+# Modeling
 
 This folder contains all files to train, deploy, monitor the model and make predictions:
 
 - `preprocess.py`: the functions to preprocess the data
-- `train.py`: the functions to train the model with AWS, Prefect and MLflow
-- `predict.py`: the functions to run the Flask App
-- `test.py`: the functions to predict using the selected model
 - `prefect_s3_bucket_block.py`: the functions to create a block in prefect UI
-- `docker-compose.yml`: the Docker set-up for monitoring
+- `create_db.py`: the functions to create the DB in Grafana and Adminer:
+- `train.py`: the functions to train the model with AWS, Prefect and MLflow, and to monitor with Grafana and Adminer
+
+  - **Adminer**: This service is based on the adminer Docker image, which provides a web-based database management tool
+
+  - **Grafana**: This service is based on the grafana/grafana Docker image, which sets up the Grafana monitoring and visualization platform
+
 - `config`: this folder contains the file `grafana_datasources.yaml` to acces the data and `grafana_dashboards.yaml` to save dashboards
 - `dashboards`: use this folder to save the dashboards created in Gafana
-- `create_db.py`: the functions to create the DB in Grafana and Adminer:
-
-  - **Adminer**: This service is based on the adminer Docker image, which provides a web-based database management tool.
-
-  - **Grafana**: This service is based on the grafana/grafana Docker image, which sets up the Grafana monitoring and visualization platform.
-
+- `docker-compose.yml`: the Docker set-up for monitoring
+- `predict.py`: the functions to run the Flask App
+- `test.py`: the functions to predict using the selected model
 - `results_printouts`: a folder with some print outs of the results
 
 ## Set Up
 
-### AWS Set Up
+### AWS
 
 - Create a EC2 Instance, a S3 Bucker and a RDS Instance. Follow this video for the set up [link](https://www.youtube.com/watch?v=1ykg4YmbFVA&list=PL3MmuxUbc_hIUISrluw_A7wDSmfOhErJK&index=16&t=1383s). The configuration data for the RDS will be later used to run MLflow
 
@@ -32,7 +32,7 @@ This folder contains all files to train, deploy, monitor the model and make pred
 
 The model will be deployed in Prefect.
 
-- `prefect_s3_bucket_block.py`: run this file to create a block in prefect UI (Make sure to run `prefect server sclearbe saved in the `.env` file before running the file
+- `prefect_s3_bucket_block.py`: run this file to create a block in prefect UI (Make sure to run before `prefect server start`):
 
     ```bash
     python prefect_s3_bucket_block.py
