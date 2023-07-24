@@ -13,13 +13,12 @@
    conda create -n main-env python=3.9
    conda activate main-env
 
-3. If `python-dotenv` is not workinng, you need to install it in the project:
+3. If `setuptools` and `wheel` is not workinng, you need to install it in the project:
 
     ```bash
-    conda install -c conda-forge python-dotenv
-    conda install -n myenv setuptools wheel
+    conda install setuptools wheel
 
-4. Execute the setup.py script and install the project dependencies incl. requirements.txt (if you face an error with `python-dotenv`, use `BASE_DIR` in the `setup.py` as a string).
+4. Execute the setup.py script and install the project dependencies included in lsrequirements.txt:
 
     ```bash
     pip install .

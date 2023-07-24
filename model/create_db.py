@@ -60,7 +60,10 @@ def prep_db(sql_query: str, sorted_results: pd.DataFrame) -> None:
 
         # Write sorted_results DataFrame to the 'evaluation_results' table.
         # To replace the existing table: if_exists='replace'
-        sorted_results.to_sql('evaluation_results', con=engine, if_exists='replace', index=False)
+        
+        data_table = input("Do you want to replace or append the results to the existing database (if exists)? Select replace or apppend: ")
+
+        sorted_results.to_sql('evaluation_results', con=engine, if_exists=f'{data_table}', index=False)
     finally:
         engine.dispose()
 

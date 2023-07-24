@@ -9,8 +9,9 @@ disable = [
     "broad-exception-caught",       # W0718
     "unused-variable",              # W0612
     "not-context-manager",          # E1129
-    "missing-final-newline"         # C0304
-    "ungrouped-imports"             # C0412
+    "missing-final-newline",        # C0304
+    "ungrouped-imports",            # C0412
+    "pointless-string-statement"    # W0105
 ]
 
 

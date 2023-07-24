@@ -9,6 +9,10 @@ from pathlib import Path
 # Load environmental variables
 load_dotenv()
 
+BASE_DIR = os.getenv("BASE_DIR")
+TEST_DATA_PATH = os.getenv("TEST_DATA_PATH")
+
+data_path = os.path.normpath(os.path.join(BASE_DIR, TEST_DATA_PATH))
 
 # URL of the Flask API endpoint
 url = 'http://localhost:9696/predict'
@@ -16,7 +20,8 @@ url = 'http://localhost:9696/predict'
 try:
     # Send a POST request to the Flask API with the data_path as JSON data in the request body
     # Set a timeout of 5 seconds for the request
-    data_path = "C:\\Users\\bmart\\OneDrive\\11_MLOps\\mlops-car-prices\\data\\test_sample.csv"
+    # data_path = "C:\\Users\\bmart\\OneDrive\\11_MLOps\\mlops-car-prices\\data\\test_sample.csv"
+    data_path = data_path
     response = requests.post(url, json={"data_path": data_path}, timeout=5)
 
     # Check if the response status code is successful (e.g., 200 OK)

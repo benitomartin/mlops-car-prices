@@ -7,5 +7,5 @@ req:
 test:
 	pytest -s .\tests\
 
-# pylint:
-# 	pylint --recursive=y .
+pylint:
+	pylint --recursive=y .

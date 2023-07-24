@@ -1,7 +1,6 @@
 ## predict.py file
 import os
 import mlflow
-import joblib
 import pandas as pd
 from flask import Flask, request, jsonify
 from dotenv import load_dotenv
@@ -10,20 +9,22 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # # Get the RUN_ID after running orchestrate_s3.py and save it in .env
-# RUN_ID = os.getenv("RUN_ID")
-# BUCKET_NAME = os.getenv("BUCKET_NAME")
-# EXPERIMENT_ID = os.getenv("EXPERIMENT_ID")
+RUN_ID = os.getenv("RUN_ID")
+BUCKET_NAME = os.getenv("BUCKET_NAME")
+EXPERIMENT_ID = os.getenv("EXPERIMENT_ID")
 
 # # Path to the model
-# logged_model = f's3://{BUCKET_NAME}/{EXPERIMENT_ID}/{RUN_ID}/artifacts/models_mlflow'
+logged_model = f's3://{BUCKET_NAME}/{EXPERIMENT_ID}/{RUN_ID}/artifacts/models_mlflow'
 
-
-logged_model = 's3://mlflow-tracking-remote/29/aa806b4bc4044777a0a25d5b8a24d7d5/artifacts/models_mlflow'
 
 # Load model as a PyFuncModel.
 model = mlflow.pyfunc.load_model(logged_model)
 
-data_path = "C:\\Users\\bmart\\OneDrive\\11_MLOps\\mlops-car-prices\\data\\test_sample.csv"
+# Get the data
+BASE_DIR = os.getenv("BASE_DIR")
+TEST_DATA_PATH = os.getenv("TEST_DATA_PATH")
+
+data_path = os.path.normpath(os.path.join(BASE_DIR, TEST_DATA_PATH))
 
 
 def clean_data(data_path: str) -> pd.DataFrame:

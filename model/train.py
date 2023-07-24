@@ -147,9 +147,14 @@ def train_model(X_train: pd.DataFrame,
         # Get the best model itself from the best_models dictionary
         best_model = best_models[best_model_name]
 
-        # Save the best model to a file using joblib.dump() locally
+                # Save the best model to a file using joblib.dump() locally
+        models_folder = "trained_models"     
         model_filename = f"{best_model_name}_best_model.joblib"
-        joblib.dump(best_model, model_filename)
+        model_path = os.path.join(models_folder, model_filename)
+
+        joblib.dump(best_model, model_path)
+
+        # joblib.dump(best_model, model_filename)
 
 
         # Evaluate the best model on the test data again (for logging)
@@ -175,7 +180,8 @@ def train_model(X_train: pd.DataFrame,
         mlflow.log_metric("MSE", mse)
         
         # Log the local model 
-        mlflow.log_artifact(model_filename)
+        # mlflow.log_artifact(model_filename)
+        mlflow.log_artifact(model_path)
 
         # # Log model and artifact
         artifact_path = "models_mlflow"
@@ -239,10 +245,10 @@ def main_flow() -> None:
     mlflow.set_experiment(f"{experiment_name}")
 
 
-    ## Load and save data in AWS Bucket
-    BUCKET_NAME = os.getenv("BUCKET_NAME")
-    s3_bucket_block = S3Bucket.load(BUCKET_NAME)
-    s3_bucket_block.download_folder_to_path(from_folder="data", to_folder="data")
+    # ## Load and save data in AWS Bucket
+    # BUCKET_NAME = os.getenv("BUCKET_NAME")
+    # s3_bucket_block = S3Bucket.load(BUCKET_NAME)
+    # s3_bucket_block.download_folder_to_path(from_folder="data", to_folder="data")
     
     BASE_DIR = os.getenv('BASE_DIR')
     DATA_PATH = os.getenv('DATA_PATH') 
