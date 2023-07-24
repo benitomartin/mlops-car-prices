@@ -14,7 +14,6 @@ load_dotenv()
 RUN_ID = os.getenv("RUN_ID")
 BUCKET_NAME = os.getenv("BUCKET_NAME")
 EXPERIMENT_ID = os.getenv("EXPERIMENT_ID")
-# TEST_DATA_PATH = os.getenv("TEST_DATA_PATH")
 
 # # Path to the model
 logged_model = f's3://{BUCKET_NAME}/{EXPERIMENT_ID}/{RUN_ID}/artifacts/models_mlflow'

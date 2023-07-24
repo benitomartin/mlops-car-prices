@@ -13,12 +13,12 @@
    conda create -n main-env python=3.9
    conda activate main-env
 
-3. If `setuptools` and `wheel` is not workinng, you need to install it in the project:
+3. Install `setuptools` and `wheel`:
 
     ```bash
     conda install setuptools wheel
 
-4. Execute the setup.py script and install the project dependencies included in lsrequirements.txt:
+4. Execute the setup.py script and install the project dependencies included in the requirements.txt:
 
     ```bash
     pip install .
