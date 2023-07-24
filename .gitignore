@@ -117,7 +117,9 @@ access_aws_variables.py
 remove_env_var.py
 env_vars.py
 S3 Bucket.docx
-notebooks
+notebooks/EDA and Modeling Functions.ipynb
+notebooks/EDA and Modeling MLflow-AWS.ipynb
+notebooks/EDA and Modeling MLflow.ipynb
 src
 add_aws_env.py
 terraform
