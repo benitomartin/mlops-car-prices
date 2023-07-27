@@ -28,6 +28,7 @@ from prefect.artifacts import create_markdown_artifact
 load_dotenv()
 
 
+
 @task
 def train_model(X_train: pd.DataFrame,
                 X_test: pd.DataFrame,

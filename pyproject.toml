@@ -11,8 +11,11 @@ disable = [
     "not-context-manager",          # E1129
     "missing-final-newline",        # C0304
     "ungrouped-imports",            # C0412
-    "pointless-string-statement"    # W0105
+    "pointless-string-statement",   # W0105
+    "missing-import",               # C0415 
+    "logging-fstring-interpolation" # W120
 ]
+
 
 
 [tool.black]
