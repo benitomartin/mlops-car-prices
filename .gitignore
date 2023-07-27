@@ -121,6 +121,8 @@ S3 Bucket.docx
 infrastructure/terraform.docx
 integration_tests/.env
 infrastructure/.env
+infrastructure/.terraform
+infrastructure/.terraform.lock.hcl
 lambda/.env
 lambda/Streaming.docx
 
