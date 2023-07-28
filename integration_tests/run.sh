@@ -15,7 +15,7 @@ if [ -z "$integration_container" ]; then
 fi
 
 # Run the integration tests with the specified container name
-docker exec -it "$integration_container" pytest test_integration.py
+docker exec "$integration_container" pytest test_integration.py
 
 # Check if the my-app container is running
 my_app_container=$(docker ps -q --filter "name=my-app")
@@ -24,7 +24,7 @@ if [ -z "$my_app_container" ]; then
     echo "The my-app container is not running. Skipping the prediction test."
 else
     # The my-app container is running, so run the prediction test
-    docker exec -it "$my_app_container" pytest test_integration.py
+    docker exec "$my_app_container" pytest test_integration.py
 fi
 
 # Stop the containers
