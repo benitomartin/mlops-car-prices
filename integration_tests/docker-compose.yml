@@ -5,7 +5,7 @@ services:
     ports:
       - "9696:9696"
     volumes:
-      - C:\Users\bmart\OneDrive\11_MLOps\mlops-car-prices\data:/app/data
+      - ../data:/app/data
     environment:
       - FLASK_ENV=production
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
