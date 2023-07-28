@@ -90,7 +90,7 @@ jobs:
           TEST_DATA_PATH: data/test_sample.csv
         run: |
           . run.sh
-          exit 0 # Add an explicit exit code 0 to indicate successful tests
+        # exit 0 # Add an explicit exit code 0 to indicate successful tests
          
 
   tf-plan:
