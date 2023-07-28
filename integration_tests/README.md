@@ -77,3 +77,5 @@ icacls .\run.sh /grant Everyone:RX
 docker-compose config
 
 .\run.sh
+
+ CI CD

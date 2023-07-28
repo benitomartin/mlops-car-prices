@@ -54,3 +54,4 @@ Below you can find some instructions to understand the project content. Feel fre
     make install
 
 ## Project Structure
+ CI CD
