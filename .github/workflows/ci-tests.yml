@@ -40,16 +40,16 @@ jobs:
           python-version: 3.9
 
       - name: Install dependencies
-        working-directory: "BASE_DIR
+        working-directory: $BASE_DIR
         run: pip install -r requirements.txt
 
       - name: Run Unit tests
-        working-directory: ./
+        working-directory: $BASE_DIR
         run: pytest -vv -s ./tests/
         # run: pytest -s .\tests\
 
       - name: Lint
-        working-directory: "./"
+        working-directory: $BASE_DIR
         run: pylint --recursive=y .
 
       - name: Configure AWS Credentials
