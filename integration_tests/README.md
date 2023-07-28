@@ -70,3 +70,10 @@ logged_model = f's3://{BUCKET_NAME}/{EXPERIMENT_ID}/{RUN_ID}/artifacts/models_ml
     ```bash
     docker-compose down
     ```
+
+
+icacls .\run.sh /grant Everyone:RX
+
+docker-compose config
+
+.\run.sh

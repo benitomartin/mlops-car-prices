@@ -118,13 +118,18 @@ add_aws_env.py
 env_vars.py
 remove_env_var.py
 S3 Bucket.docx
-infrastructure/terraform.docx
 integration_tests/.env
+infrastructure/terraform.docx
 infrastructure/.env
 infrastructure/.terraform
 infrastructure/.terraform.lock.hcl
 lambda/.env
 lambda/Streaming.docx
+terraform
+terraform/terraform.docx
+terraform/.env
+terraform/.terraform
+terraform/.terraform.lock.hcl
 
 
 # Celery stuff

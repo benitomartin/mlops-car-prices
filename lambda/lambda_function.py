@@ -2,7 +2,6 @@
 
 import os
 import logging
-import sys
 import json
 import mlflow.pyfunc
 import pandas as pd
