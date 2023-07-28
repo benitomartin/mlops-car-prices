@@ -1,8 +1,13 @@
-name: CI-Tests
+name: CI-Tests-New-File
 on:
+  push:
+    branches:
+      - main
+      - develop
   pull_request:
     branches:
-      - 'develop'
+      - main
+      - develop
     paths:
       # - './**'
       - './terraform/**'
@@ -63,6 +68,6 @@ jobs:
 
       - name: TF plan
         id: plan
-        working-directory: 'infrastructure'
+        working-directory: 'terraform'
         run: |
           terraform init -backend-config="key=mlops-zoomcamp-prod.tfstate" --reconfigure && terraform plan -var-file=C:\Users\bmart\OneDrive\11_MLOps\mlops-car-prices\terraform\vars\prod.tfvars
