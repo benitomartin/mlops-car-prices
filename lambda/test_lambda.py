@@ -1,6 +1,8 @@
 from lambda_function import lambda_handler
 
 # Create a sample event JSON object
+# pylint: disable=R0801
+# Similar lines of code in this file with test_docker.py
 sample_event = {
     "Records": [
         {

@@ -12,7 +12,13 @@ disable = [
     "missing-final-newline",        # C0304
     "ungrouped-imports",            # C0412
     "pointless-string-statement",   # W0105
-    "F0401",                
+    "F0401",
+    "redefined-outer-name",         # W0621
+    "too-many-arguments",           # R0913
+    "too-many-locals",              # R0914
+    "too-many-statements",          # R0915
+    "consider-using-f-string",      # C0209
+    "logging-format-interpolation", # W1202               
     "logging-fstring-interpolation" # W120
 ]
 

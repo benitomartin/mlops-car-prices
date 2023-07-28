@@ -1,9 +1,8 @@
 ## test_integration.py file
-
+import os
 import requests
 import pytest
 from dotenv import load_dotenv
-import os
 
 
 # Load environmental variables

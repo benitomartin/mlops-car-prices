@@ -66,5 +66,4 @@ def prep_db(sql_query: str, sorted_results: pd.DataFrame) -> None:
         sorted_results.to_sql('evaluation_results', con=engine, if_exists=f'{data_table}', index=False)
     finally:
         engine.dispose()
-
-
+        

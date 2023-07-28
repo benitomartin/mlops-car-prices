@@ -37,4 +37,3 @@ if __name__ == "__main__":
     print(f"Bucket name: {BUCKET_NAME}") 
 
     create_s3_bucket(BUCKET_NAME)
-
