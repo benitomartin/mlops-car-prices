@@ -28,8 +28,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
-          path: 'mlops-car-prices' # Set the destination directory to 'mlops-car-prices'
+          fetch-depth: 0
 
+      - name: Set BASE_DIR environment variable
+        run: echo "BASE_DIR=${{ github.workspace }}" >> $GITHUB_ENV
+  
 
       - name: Debug Environment Variables
         run: |
