@@ -1,11 +1,12 @@
-# ci-tests.yml
 name: CI-Tests
 on:
   pull_request:
     branches:
       - 'develop'
     paths:
-      - './**'
+      # - './**'
+      - './terraform/**'
+      - './integration_tests/**'
 
 env:
   AWS_DEFAULT_REGION: 'eu-central-1'
