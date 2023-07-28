@@ -13,6 +13,7 @@ services:
       - RUN_ID=${RUN_ID}
       - EXPERIMENT_ID=${EXPERIMENT_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - TEST_DATA_PATH=${TEST_DATA_PATH}
 
     # env_file:
     #   - C:\Users\bmart\OneDrive\11_MLOps\mlops-car-prices\.env
