@@ -1,4 +1,4 @@
-name: CI-Tests-New
+name: CI-Tests-New-File
 on:
   pull_request:
     branches:
