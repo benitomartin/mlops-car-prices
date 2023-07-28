@@ -1,4 +1,4 @@
-name: CI-Tests-Ben
+name: CI-Tests-Benito
 on:
   pull_request:
     branches:
