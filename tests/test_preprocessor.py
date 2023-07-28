@@ -13,7 +13,7 @@ from test_data_cleaning import clean_data
 load_dotenv()
 
 # The file path of the CSV data you want to use for prediction
-TEST_PATH = os.path.join(os.getenv('BASE_DIR'), os.getenv('DATA_PATH').replace("/", "\\"))
+TEST_PATH = os.path.join(os.getenv('BASE_DIR'), os.getenv('DATA_PATH'))
 
 # The clean data before preprocessing
 df = clean_data(TEST_PATH)
