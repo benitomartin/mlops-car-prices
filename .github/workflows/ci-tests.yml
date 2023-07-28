@@ -80,10 +80,11 @@ jobs:
           aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_DEFAULT_REGION }}
 
-      # - uses: hashicorp/setup-terraform@v1
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v1
 
       - name: TF plan
-        working-directory: 'terraform'
+        working-directory: './terraform'
         run: |
           terraform init -backend-config="key=mlops-zoomcamp-prod.tfstate" --reconfigure 
           terraform plan -var-file=vars/prod.tfvars
