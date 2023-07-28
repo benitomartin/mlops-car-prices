@@ -2,14 +2,26 @@
 
 import os
 import json
+from typing import Dict, Any, Callable
+import boto3
 import mlflow.pyfunc
 import pandas as pd
-import boto3
 from dotenv import load_dotenv
 
 load_dotenv()
 
+# pylint: disable=R0801
 def get_model_location(run_id):
+    """
+    Get the model location from environment variables or construct it using default values.
+
+    Parameters:
+        run_id (str): The ID of the MLflow run.
+
+    Returns:
+        str: The model location.
+    """
+        
     model_location = os.getenv('MODEL_LOCATION')
 
     if model_location is not None:
@@ -23,16 +35,28 @@ def get_model_location(run_id):
     return model_location
 
 
-
+# pylint: disable=R0801
 def load_model(run_id):
     model_path = get_model_location(run_id)
     model = mlflow.pyfunc.load_model(model_path)
     return model
 
-
+# pylint: disable=R0801
 class ModelService:
+    """
+    Class representing a model service that handles data cleaning, predictions, and callbacks.
+    """
 
     def __init__(self, model, model_version=None, callbacks=None):
+        """
+        Initialize the ModelService.
+
+        Parameters:
+            model: The pre-trained model.
+            model_version (str): The version of the model (optional).
+            callbacks (list): List of callback functions (optional).
+        """
+        
         self.model = model
         self.model_version = model_version
         self.callbacks = callbacks or []
@@ -71,6 +95,15 @@ class ModelService:
 
 
     def lambda_handler(self, event):
+        """
+        Lambda function to make predictions based on incoming Kinesis records.
+
+        Parameters:
+            event (dict): The Lambda event containing Kinesis records.
+
+        Returns:
+            dict: The prediction results.
+        """
 
         prediction_events = []
       
@@ -122,22 +155,39 @@ class ModelService:
             }
 
 
-class KinesisCallback:
-    def __init__(self, kinesis_client, prediction_stream_name):
-        self.kinesis_client = kinesis_client
-        self.prediction_stream_name = prediction_stream_name
 
-    def put_record(self, prediction_event):
-        real_price = prediction_event['real_price']
+def put_kinesis_record(kinesis_client, prediction_stream_name: str, prediction_event: Dict[str, Any]):
+    """
+    Put a prediction event into a Kinesis stream.
 
-        self.kinesis_client.put_record(
-            StreamName=self.prediction_stream_name,
-            Data=json.dumps(prediction_event),
-            PartitionKey=str(real_price),
-        )
+    Parameters:
+        kinesis_client: The AWS Kinesis client.
+        prediction_stream_name (str): The name of the Kinesis stream for predictions.
+        prediction_event (dict): The prediction event to be put into the stream.
+    """
+    real_price = prediction_event['real_price']
+    kinesis_client.put_record(
+        StreamName=prediction_stream_name,
+        Data=json.dumps(prediction_event),
+        PartitionKey=str(real_price),
+    )
+
+
+def create_kinesis_callback(prediction_stream_name: str, test_run: bool) -> Callable:
+    if not test_run:
+        kinesis_client = create_kinesis_client()
+        return lambda prediction_event: put_kinesis_record(kinesis_client, prediction_stream_name, prediction_event)
+    return lambda prediction_event: None
 
 
 def create_kinesis_client():
+    """
+    Create an AWS Kinesis client.
+
+    Returns:
+        boto3.client: The Kinesis client.
+    """
+
     endpoint_url = os.getenv('KINESIS_ENDPOINT_URL')
 
     if endpoint_url is None:
@@ -147,14 +197,22 @@ def create_kinesis_client():
 
 
 def init(prediction_stream_name: str, run_id: str, test_run: bool):
+    """
+    Initialize the model service.
+
+    Parameters:
+        prediction_stream_name (str): The name of the Kinesis stream for predictions.
+        run_id (str): The ID of the MLflow run.
+        test_run (bool): Whether it's a test run or not.
+
+    Returns:
+        ModelService: The initialized model service.
+    """
+        
     model = load_model(run_id)
 
-    callbacks = []
-
-    if not test_run:
-        kinesis_client = create_kinesis_client()
-        kinesis_callback = KinesisCallback(kinesis_client, prediction_stream_name)
-        callbacks.append(kinesis_callback.put_record)
+    kinesis_callback = create_kinesis_callback(prediction_stream_name, test_run)
+    callbacks = [kinesis_callback]
 
     model_service = ModelService(model=model, model_version=run_id, callbacks=callbacks)
 

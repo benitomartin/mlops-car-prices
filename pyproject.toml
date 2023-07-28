@@ -13,6 +13,7 @@ disable = [
     "ungrouped-imports",            # C0412
     "pointless-string-statement",   # W0105
     "F0401",
+    "too-many-function-args",       # E1121
     "trailing-newlines",            # C0305
     "redefined-outer-name",         # W0621
     "too-many-arguments",           # R0913

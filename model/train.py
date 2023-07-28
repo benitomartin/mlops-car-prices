@@ -229,7 +229,7 @@ def train_model(X_train: pd.DataFrame,
     return sorted_results
 
 
-
+# pylint: disable=R0801
 @flow()
 def main_flow() -> None:
     """The main training pipeline"""

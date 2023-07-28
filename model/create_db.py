@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 # Load environmental variables
 load_dotenv()
 
-
+# pylint: disable=R0801
 create_table_query = """
         CREATE TABLE IF NOT EXISTS evaluation_results (
                 "Model Name" VARCHAR,
