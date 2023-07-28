@@ -6,7 +6,7 @@ from sklearn.preprocessing import RobustScaler, StandardScaler, MinMaxScaler
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import OneHotEncoder
 from dotenv import load_dotenv
-from tests.test_data_cleaning import clean_data
+from test_data_cleaning import clean_data
 
 
 # Load environmental variables
