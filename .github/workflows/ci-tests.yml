@@ -19,7 +19,7 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   ACTIONS_STEP_DEBUG: true
   DATA_PATH: data/data.csv
-  PROJECT_PATH: ./
+  PROJECT_PATH: mlops-car-prices
   
 
 jobs:
