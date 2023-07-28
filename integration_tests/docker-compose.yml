@@ -9,4 +9,5 @@ services:
     environment:
       - FLASK_ENV=production
     env_file:
-      - ../.env
+      - C:\Users\bmart\OneDrive\11_MLOps\mlops-car-prices\.env
+      # - ../.env
