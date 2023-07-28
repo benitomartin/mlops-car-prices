@@ -41,11 +41,11 @@ jobs:
           python-version: 3.9
 
       - name: Install dependencies
-        working-directory: ${{ env.BASE_DIR }}
+        working-directory: ./
         run: pip install -r requirements.txt
 
       - name: Run Unit tests
-        working-directory: $BASE_DIR
+        working-directory: ./
         run: pytest -vv -s ./tests/
         # run: pytest -s .\tests\
 
