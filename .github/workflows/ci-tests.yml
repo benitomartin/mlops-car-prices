@@ -42,19 +42,7 @@ jobs:
       - name: Set up Python 3.9
         uses: actions/setup-python@v2
         with:
-          python-version: 3.9
-
-      # - name: Upgrade pip
-      #   run: python -m pip install --upgrade pip
-        
-      # - name: Create virtual environment
-      #   run: python -m venv venv
-       
-      # - name: Activate virtual environment
-      #   run: |
-      #     source venv/bin/activate
-      #     pip install -r requirements.txt  
-            
+          python-version: 3.9          
 
       - name: Install dependencies
         working-directory: ./
@@ -65,7 +53,6 @@ jobs:
       - name: Run Unit tests
         working-directory: ./
         run: pytest -vv -s ./tests/
-        # run: pytest -s .\tests\
 
       - name: Lint
         working-directory: ./
@@ -77,6 +64,7 @@ jobs:
           aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_DEFAULT_REGION }}
+        
 
       - name: Integration Test
         working-directory: 'integration_tests'
@@ -90,7 +78,6 @@ jobs:
           TEST_DATA_PATH: data/test_sample.csv
         run: |
           . run.sh
-          exit 0 # Add an explicit exit code 0 to indicate successful tests
          
 
   tf-plan:

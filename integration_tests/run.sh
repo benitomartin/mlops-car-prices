@@ -30,5 +30,5 @@ fi
 # Stop the containers
 docker-compose down
 
-# Pause the script to keep the window open
-read -p "Press Enter to exit..."
+# # Pause the script to keep the window open
+# read -p "Press Enter to exit..."

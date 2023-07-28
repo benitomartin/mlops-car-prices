@@ -71,11 +71,16 @@ logged_model = f's3://{BUCKET_NAME}/{EXPERIMENT_ID}/{RUN_ID}/artifacts/models_ml
     docker-compose down
     ```
 
-
+To activate the script
 icacls .\run.sh /grant Everyone:RX
 
+To check the config file
 docker-compose config
 
+To run the script with a git bash window
 .\run.sh
+
+To run un conda
+bash -i run.sh
 
  CI CD
