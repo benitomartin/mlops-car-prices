@@ -40,7 +40,7 @@ jobs:
           python-version: 3.9
 
       - name: Install dependencies
-        working-directory: mlops-car-prices
+        working-directory: "BASE_DIR
         run: pip install -r requirements.txt
 
       - name: Run Unit tests
