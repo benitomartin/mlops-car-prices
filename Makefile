@@ -5,7 +5,7 @@ req:
 	pip install -r requirements.txt
 
 test:
-	pytest -s .\tests\
+	pytest -vv -s .\tests\
 
 pylint:
 	pylint --recursive=y .
