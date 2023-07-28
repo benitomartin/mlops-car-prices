@@ -42,19 +42,7 @@ jobs:
       - name: Set up Python 3.9
         uses: actions/setup-python@v2
         with:
-          python-version: 3.9
-
-      # - name: Upgrade pip
-      #   run: python -m pip install --upgrade pip
-        
-      # - name: Create virtual environment
-      #   run: python -m venv venv
-       
-      # - name: Activate virtual environment
-      #   run: |
-      #     source venv/bin/activate
-      #     pip install -r requirements.txt  
-            
+          python-version: 3.9          
 
       - name: Install dependencies
         working-directory: ./
@@ -65,7 +53,6 @@ jobs:
       - name: Run Unit tests
         working-directory: ./
         run: pytest -vv -s ./tests/
-        # run: pytest -s .\tests\
 
       - name: Lint
         working-directory: ./
@@ -78,19 +65,17 @@ jobs:
           aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_DEFAULT_REGION }}
         
-      - name: Load Environment Variables from File
-        run: source .env
 
       - name: Integration Test
         working-directory: 'integration_tests'
-        # env:
-        #   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        #   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        #   AWS_DEFAULT_REGION: ${{ env.AWS_DEFAULT_REGION }}
-        #   RUN_ID: aa806b4bc4044777a0a25d5b8a24d7d5
-        #   BUCKET_NAME: mlflow-tracking-remote
-        #   EXPERIMENT_ID: 29
-        #   TEST_DATA_PATH: data/test_sample.csv
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ env.AWS_DEFAULT_REGION }}
+          RUN_ID: aa806b4bc4044777a0a25d5b8a24d7d5
+          BUCKET_NAME: mlflow-tracking-remote
+          EXPERIMENT_ID: 29
+          TEST_DATA_PATH: data/test_sample.csv
         run: |
           . run.sh
          
