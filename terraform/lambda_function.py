@@ -2,10 +2,11 @@
 
 # Import required libraries
 import os
-from dotenv import load_dotenv
-import lambda_model
 import logging
 import json
+from dotenv import load_dotenv
+import lambda_model
+
 
 # Load environment variables from .env file
 load_dotenv()

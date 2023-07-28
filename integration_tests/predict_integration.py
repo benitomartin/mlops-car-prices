@@ -88,6 +88,7 @@ def predict_price():
     # Return the response as JSON
     return jsonify(prediction)
 
+# pylint: disable=R0801
 if __name__ == "__main__":
     # Start the Flask app on the specified host and port
     app.run(debug=True, host='0.0.0.0', port=9696)
