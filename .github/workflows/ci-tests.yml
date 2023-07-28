@@ -1,4 +1,4 @@
-name: CI-Tests-New-File
+name: CI-Tests
 on:
   push:
     branches:
