@@ -53,7 +53,7 @@ jobs:
 
       - name: Lint
         working-directory: ./
-        run: pylint --recursive=y .
+        run: pylint --verbose --recursive=y .
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
