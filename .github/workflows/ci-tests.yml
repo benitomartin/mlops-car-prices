@@ -27,6 +27,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          path: 'mlops-car-prices' # Set the destination directory to 'mlops-car-prices'
+
 
       - name: Debug Environment Variables
         run: |
