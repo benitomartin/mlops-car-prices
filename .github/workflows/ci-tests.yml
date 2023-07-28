@@ -17,12 +17,20 @@ env:
   AWS_DEFAULT_REGION: 'eu-central-1'
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  ACTIONS_STEP_DEBUG: true
+  
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - name: Debug Environment Variables
+        run: |
+          echo "BASE_DIR: $BASE_DIR"
+          echo "DATA_PATH: $DATA_PATH"
+
       - name: Set up Python 3.9
         uses: actions/setup-python@v2
         with:
@@ -33,7 +41,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run Unit tests
-        working-directory: "./"
+        working-directory: ./
         run: pytest -vv -s ./tests/
         # run: pytest -s .\tests\
 
@@ -57,6 +65,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - name: Debug Environment Variables
+        run: |
+          echo "BASE_DIR: $BASE_DIR"
+          echo "DATA_PATH: $DATA_PATH"
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -64,7 +78,7 @@ jobs:
           aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_DEFAULT_REGION }}
 
-      - uses: hashicorp/setup-terraform@v1
+      # - uses: hashicorp/setup-terraform@v1
 
       - name: TF plan
         working-directory: 'terraform'
