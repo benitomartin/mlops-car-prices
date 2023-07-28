@@ -77,20 +77,22 @@ jobs:
           aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_DEFAULT_REGION }}
+        
+      - name: Load Environment Variables from File
+        run: source .env
 
       - name: Integration Test
         working-directory: 'integration_tests'
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: ${{ env.AWS_DEFAULT_REGION }}
-          RUN_ID: aa806b4bc4044777a0a25d5b8a24d7d5
-          BUCKET_NAME: mlflow-tracking-remote
-          EXPERIMENT_ID: 29
-          TEST_DATA_PATH: data/test_sample.csv
+        # env:
+        #   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        #   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        #   AWS_DEFAULT_REGION: ${{ env.AWS_DEFAULT_REGION }}
+        #   RUN_ID: aa806b4bc4044777a0a25d5b8a24d7d5
+        #   BUCKET_NAME: mlflow-tracking-remote
+        #   EXPERIMENT_ID: 29
+        #   TEST_DATA_PATH: data/test_sample.csv
         run: |
           . run.sh
-        # exit 0 # Add an explicit exit code 0 to indicate successful tests
          
 
   tf-plan:
