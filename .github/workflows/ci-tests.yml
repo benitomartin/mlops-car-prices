@@ -19,7 +19,7 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   ACTIONS_STEP_DEBUG: true
   DATA_PATH: data/data.csv
-  BASE_DIR: /home/runner/work/mlops-car-prices
+  BASE_DIR: /home/runner/work/mlops-car-prices/mlops-car-prices
  
 
 jobs:
@@ -28,7 +28,7 @@ jobs:
     steps:
 
       - name: Set BASE_DIR environment variable
-        run: echo "BASE_DIR=/home/runner/work/mlops-car-prices" >> $GITHUB_ENV
+        run: echo "BASE_DIR=/home/runner/work/mlops-car-prices/mlops-car-prices" >> $GITHUB_ENV
 
       - name: Debug Environment Variables
         run: |
