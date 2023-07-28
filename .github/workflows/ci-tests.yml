@@ -18,17 +18,11 @@ env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   ACTIONS_STEP_DEBUG: true
+  BASE_DIR: "mlops-car-prices"
   DATA_PATH: data/data.csv
   
 
 jobs:
-  setup:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Set BASE_DIR
-        run: echo "BASE_DIR=$(basename $(dirname ${{ github.workspace }}))" >> $GITHUB_ENV
-        shell: bash
-
   test:
     runs-on: ubuntu-latest
     steps:
