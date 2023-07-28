@@ -12,7 +12,7 @@ disable = [
     "missing-final-newline",        # C0304
     "ungrouped-imports",            # C0412
     "pointless-string-statement",   # W0105
-    "missing-import",               # C0415 
+    "F0401",                
     "logging-fstring-interpolation" # W120
 ]
 

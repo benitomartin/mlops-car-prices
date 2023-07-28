@@ -8,4 +8,4 @@ test:
 	pytest -vv -s .\tests\
 
 pylint:
-	pylint --recursive=y .
+	pylint --verbose --recursive=y .

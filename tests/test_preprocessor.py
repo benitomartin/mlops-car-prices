@@ -6,14 +6,14 @@ from sklearn.preprocessing import RobustScaler, StandardScaler, MinMaxScaler
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import OneHotEncoder
 from dotenv import load_dotenv
-from tests.test_data_cleaning import clean_data
+from test_data_cleaning import clean_data
 
 
 # Load environmental variables
 load_dotenv()
 
 # The file path of the CSV data you want to use for prediction
-TEST_PATH = os.path.join(os.getenv('BASE_DIR'), os.getenv('DATA_PATH').replace("/", "\\"))
+TEST_PATH = os.path.join(os.getenv('BASE_DIR'), os.getenv('DATA_PATH'))
 
 # The clean data before preprocessing
 df = clean_data(TEST_PATH)
