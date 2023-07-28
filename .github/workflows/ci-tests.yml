@@ -5,7 +5,9 @@ on:
     branches:
       - 'develop'
     paths:
-      - './**'
+      # - './**'
+      - './terraform/**'
+      - './integration_tests/**'
 
 env:
   AWS_DEFAULT_REGION: 'eu-central-1'
