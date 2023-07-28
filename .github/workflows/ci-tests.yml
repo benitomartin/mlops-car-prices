@@ -42,21 +42,21 @@ jobs:
         with:
           python-version: 3.9
 
-      - name: Upgrade pip
-        run: python -m pip install --upgrade pip
+      # - name: Upgrade pip
+      #   run: python -m pip install --upgrade pip
         
-      - name: Create virtual environment
-        run: python -m venv venv
+      # - name: Create virtual environment
+      #   run: python -m venv venv
        
-      - name: Activate virtual environment
-        run: |
-          source venv/bin/activate
-          pip install -r requirements.txt  
+      # - name: Activate virtual environment
+      #   run: |
+      #     source venv/bin/activate
+      #     pip install -r requirements.txt  
             
 
-      # - name: Install dependencies
-      #   working-directory: ./
-      #   run: pip install -r requirements.txt
+      - name: Install dependencies
+        working-directory: ./
+        run: pip install -r requirements.txt
 
       - name: Run Unit tests
         working-directory: ./
