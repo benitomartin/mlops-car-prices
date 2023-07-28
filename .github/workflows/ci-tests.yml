@@ -19,26 +19,15 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   ACTIONS_STEP_DEBUG: true
   DATA_PATH: data/data.csv
-  PROJECT_PATH: mlops-car-prices
-  
+ 
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
 
       - name: Set BASE_DIR environment variable
-        run: echo "BASE_DIR=${{ github.workspace }}" >> $GITHUB_ENV
-
-      - name: Build
-        run: go build -v ./...
-        working-directory: ${{ github.workspace }}/${{ env.PROJECT_PATH }}
-
-      - name: Set BASE_DIR environment variable
-        run: echo "BASE_DIR=${{ github.workspace }}" >> $GITHUB_ENV
-  
+        run: echo "BASE_DIR=/home/runner/work/mlops-car-prices" >> $GITHUB_ENV
 
       - name: Debug Environment Variables
         run: |
