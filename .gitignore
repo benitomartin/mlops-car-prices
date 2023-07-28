@@ -125,7 +125,6 @@ infrastructure/.terraform
 infrastructure/.terraform.lock.hcl
 lambda/.env
 lambda/Streaming.docx
-terraform
 terraform/terraform.docx
 terraform/.env
 terraform/.terraform

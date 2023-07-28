@@ -21,7 +21,7 @@ from sklearn.exceptions import FitFailedWarning
 
 import mlflow
 from prefect import flow, task
-from prefect_aws import S3Bucket
+# from prefect_aws import S3Bucket
 from prefect.artifacts import create_markdown_artifact
 
 # Load environmental variables

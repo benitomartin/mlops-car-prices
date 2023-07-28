@@ -1,9 +1,8 @@
 ## test_integration.py file
-
+import os
 import requests
 import pytest
 from dotenv import load_dotenv
-import os
 
 
 # Load environmental variables
@@ -45,5 +44,3 @@ def test_prediction():
     except requests.exceptions.RequestException as err:
         # If any other request-related exception occurred, handle the exception
         pytest.fail(f"An error occurred: {err}")
-
-

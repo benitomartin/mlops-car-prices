@@ -81,8 +81,9 @@ def predict(X_test: pd.DataFrame) -> pd.DataFrame:
 
     return y_pred_list
 
-
-def lambda_handler(event, context):
+# Unused context argument is required
+# pylint: disable=W0613
+def lambda_handler(event, context): 
     logging.info("Received Lambda event: {}".format(json.dumps(event)))
 
     prediction_events = []

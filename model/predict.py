@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # # Get the RUN_ID after running orchestrate_s3.py and save it in .env
+# pylint: disable=R0801
 RUN_ID = os.getenv("RUN_ID")
 BUCKET_NAME = os.getenv("BUCKET_NAME")
 EXPERIMENT_ID = os.getenv("EXPERIMENT_ID")
@@ -19,7 +20,7 @@ logged_model = f's3://{BUCKET_NAME}/{EXPERIMENT_ID}/{RUN_ID}/artifacts/models_ml
 # Load model as a PyFuncModel.
 model = mlflow.pyfunc.load_model(logged_model)
 
-
+# pylint: disable=R0801
 def clean_data(data_path: str) -> pd.DataFrame:
     # Read the CSV file into a DataFrame
     df = pd.read_csv(data_path)
@@ -39,12 +40,14 @@ def clean_data(data_path: str) -> pd.DataFrame:
     # Return the cleaned DataFrame
     return df
 
+# pylint: disable=R0801
 def split_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     # Separate the feature data (X) from the target variable data (y)
     X_test = df.drop(columns=["price"])  # DataFrame containing feature columns (all columns except 'price')
 
     return X_test 
 
+# pylint: disable=R0801
 def predict(X_test: pd.DataFrame) -> pd.DataFrame:
     # Make predictions using the pre-trained model
     y_pred = model.predict(X_test)
@@ -56,6 +59,7 @@ def predict(X_test: pd.DataFrame) -> pd.DataFrame:
 
 app = Flask('price-prediction')
 
+# pylint: disable=R0801
 @app.route('/predict', methods=['POST'])
 def predict_price():
     # Get the data_path from the JSON payload in the request
@@ -76,6 +80,7 @@ def predict_price():
     # Return the response as JSON
     return jsonify(prediction)
 
+# pylint: disable=R0801
 if __name__ == "__main__":
     # Start the Flask app on the specified host and port
     app.run(debug=True, host='0.0.0.0', port=9696)

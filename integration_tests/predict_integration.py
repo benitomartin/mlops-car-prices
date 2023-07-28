@@ -25,6 +25,7 @@ model = mlflow.pyfunc.load_model(logged_model)
 
 logging.getLogger().setLevel(logging.INFO)
 
+# pylint: disable=R0801
 def clean_data(data_path: str) -> pd.DataFrame:
     # Read the CSV file into a DataFrame
     df = pd.read_csv(data_path)
@@ -44,12 +45,14 @@ def clean_data(data_path: str) -> pd.DataFrame:
     # Return the cleaned DataFrame
     return df
 
+# pylint: disable=R0801
 def split_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     # Separate the feature data (X) from the target variable data (y)
     X_test = df.drop(columns=["price"])  # DataFrame containing feature columns (all columns except 'price')
 
     return X_test 
 
+# pylint: disable=R0801
 def predict(X_test: pd.DataFrame) -> pd.DataFrame:
     # Make predictions using the pre-trained model
     y_pred = model.predict(X_test)
@@ -61,6 +64,7 @@ def predict(X_test: pd.DataFrame) -> pd.DataFrame:
 
 app = Flask('price-prediction')
 
+# pylint: disable=R0801
 @app.route('/predict', methods=['POST'])
 def predict_price():
     # Get the data_path from the JSON payload in the request
