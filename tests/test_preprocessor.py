@@ -23,6 +23,7 @@ def test_data():
     """Fixture to provide the cleaned DataFrame as test data."""
     return clean_data(TEST_PATH)
 
+# pylint: disable=R0801
 def preprocess(X: pd.DataFrame) -> ColumnTransformer:
     """
     Preprocess the input DataFrame using a combination of scalers for numerical features
@@ -77,7 +78,7 @@ def preprocess(X: pd.DataFrame) -> ColumnTransformer:
     
     return preprocessor
 
-
+# pylint: disable=R0801
 def test_preprocess(test_data):
     """
     Test the preprocess function with the provided test data.
