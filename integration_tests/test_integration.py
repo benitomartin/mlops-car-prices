@@ -44,5 +44,3 @@ def test_prediction():
     except requests.exceptions.RequestException as err:
         # If any other request-related exception occurred, handle the exception
         pytest.fail(f"An error occurred: {err}")
-
-
