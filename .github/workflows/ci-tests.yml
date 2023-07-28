@@ -1,4 +1,4 @@
-name: CI-Tests-New-File
+name: CI-Tests
 on:
   push:
     branches:
@@ -19,17 +19,15 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   ACTIONS_STEP_DEBUG: true
   DATA_PATH: data/data.csv
-  
+ 
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          path: 'mlops-car-prices' # Set the destination directory to 'mlops-car-prices'
 
+      - name: Set BASE_DIR environment variable
+        run: echo "BASE_DIR=/home/runner/work/mlops-car-prices" >> $GITHUB_ENV
 
       - name: Debug Environment Variables
         run: |
@@ -42,7 +40,7 @@ jobs:
           python-version: 3.9
 
       - name: Install dependencies
-        working-directory: "./"
+        working-directory: "BASE_DIR
         run: pip install -r requirements.txt
 
       - name: Run Unit tests
