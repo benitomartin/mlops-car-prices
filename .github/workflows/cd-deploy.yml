@@ -2,12 +2,12 @@ name: CD-Deploy
 on:
   push:
     branches:
-      - main
+      # - main
       - develop
-  pull_request:
-    branches:
-      - main
-      - develop
+  # pull_request:
+  #   branches:
+  #     - main
+  #     - develop
     paths:
       - './**'
       - './terraform/**'
