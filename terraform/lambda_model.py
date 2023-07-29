@@ -93,8 +93,8 @@ class ModelService:
 
         return y_pred_list
 
-
-    def lambda_handler(self, event):
+    # pylint: disable=W0613
+    def lambda_handler(self, event, context):
         """
         Lambda function to make predictions based on incoming Kinesis records.
 
@@ -104,6 +104,8 @@ class ModelService:
         Returns:
             dict: The prediction results.
         """
+        print("Received Lambda event:", event)
+        print("Received Lambda context:", context)
 
         prediction_events = []
       

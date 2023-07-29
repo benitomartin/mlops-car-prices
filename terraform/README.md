@@ -60,6 +60,8 @@ docker build --no-cache -t lambda_image:latest .
 As the model was built with scikit-learn 1.3.0, we check the requirements has been passed
 docker run -it --rm --entrypoint="" lambda_image python -c "import sklearn; print(sklearn.__version__)"
 
+docker build -t ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG} .
+ECR_REGISTRY= 406468071577.dkr.ecr.eu-central-1.amazonaws.com
 
 aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 406468071577.dkr.ecr.eu-central-1.amazonaws.com
 
@@ -81,6 +83,8 @@ docker run -it --rm --entrypoint="" lambda_image pip list
 It might take a couple fo minutes for the log to appear
 aws kinesis put-record --stream-name stg_car_events-mlops-zoomcamp --partition-key 1 --cli-binary-format raw-in-base64-out --data '{\"car_ID\": 10, \"symboling\": 0, \"CarName\": \"audi 5000s (diesel)\", \"fueltype\": \"gas\", \"aspiration\": \"std\", \"doornumber\": \"two\", \"carbody\": \"hatchback\", \"drivewheel\": \"4wd\", \"enginelocation\": \"front\", \"wheelbase\": 99.5, \"carlength\": 178.2, \"carwidth\": 67.9, \"carheight\": 52, \"curbweight\": 3053, \"enginetype\": \"ohc\", \"cylindernumber\": \"five\", \"enginesize\": 131, \"fuelsystem\": \"mpfi\", \"boreratio\": 3.13, \"stroke\": 3.4, \"compressionratio\": 7, \"horsepower\": 160, \"peakrpm\": 5500, \"citympg\": 16, \"highwaympg\": 22, \"price\": 17859.17}'
 
+
+aws kinesis put-record --stream-name prod_car_events-mlops-zoomcamp --partition-key 1 --cli-binary-format raw-in-base64-out --data '{\"car_ID\": 10, \"symboling\": 0, \"CarName\": \"audi 5000s (diesel)\", \"fueltype\": \"gas\", \"aspiration\": \"std\", \"doornumber\": \"two\", \"carbody\": \"hatchback\", \"drivewheel\": \"4wd\", \"enginelocation\": \"front\", \"wheelbase\": 99.5, \"carlength\": 178.2, \"carwidth\": 67.9, \"carheight\": 52, \"curbweight\": 3053, \"enginetype\": \"ohc\", \"cylindernumber\": \"five\", \"enginesize\": 131, \"fuelsystem\": \"mpfi\", \"boreratio\": 3.13, \"stroke\": 3.4, \"compressionratio\": 7, \"horsepower\": 160, \"peakrpm\": 5500, \"citympg\": 16, \"highwaympg\": 22, \"price\": 17859.17}'
 
 
 $KINESIS_STREAM_OUTPUT = 'stg_car_predictions-mlops-zoomcamp'
