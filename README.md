@@ -76,3 +76,6 @@ The dataset was downloaded from Kaggle and contains several columns with car det
 
 ![notebook](https://github.com/benitomartin/mlops-car-prices/assets/116911431/cbaccce2-e3ed-4480-a715-3060d56465af)
 
+The model is being selected after performing a GridSearch with several regrssion models. The best models reach an R2 of around 0.9, mainly RandomForestRegressor and GradientBoostingRegressor.
+
+![grafana_dashboard](https://github.com/benitomartin/mlops-car-prices/assets/116911431/6201ae65-383b-44bf-b30f-11ad2b75bf34)
