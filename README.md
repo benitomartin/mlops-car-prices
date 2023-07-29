@@ -43,18 +43,37 @@ The project has been structured with the following folders and files:
 - `setup.py`: project installation module
 - `requirements.txt`: project requirements
 
+
+## Project Description
+
+The dataset was obtained from Kaggle and contains various columns with car details and prices. To prepare the data for modeling, an Exploratory Data Analysis was conducted to preprocess numerical and categorical features, and suitable scalers and encoders were chosen for the preprocessing pipeline. Subsequently, a GridSearch was performed to select the best regression models, with RandomForestRegressor and GradientBoostingRegressor being the top performers, achieving an R2 value of approximately 0.9.
+
+![notebook](https://github.com/benitomartin/mlops-car-prices/assets/116911431/cbaccce2-e3ed-4480-a715-3060d56465af)
+![grafana_dashboard](https://github.com/benitomartin/mlops-car-prices/assets/116911431/6201ae65-383b-44bf-b30f-11ad2b75bf34)
+
+Afterwards, the models underwent testing and deployment using MLflow and Prefect. Monitoring of the models was established through Grafana and Adminer Database. Subsequently, a project infrastructure was set up in Terraform, utilizing AWS modules such as Kinesis Streams (Producer & Consumer), Lambda (Serving API), S3 Bucket (Model artifacts), and ECR (Image Registry).
+
+![Deployment Prefect UI](https://github.com/benitomartin/mlops-car-prices/assets/116911431/63053687-7fe7-4eb1-876d-8416cccf5645)
+![Artifacts Prefect UI](https://github.com/benitomartin/mlops-car-prices/assets/116911431/ec8a3fab-53c2-4a23-a41d-f5b8c4570f60)
+
+Finally, to streamline the development process, a fully automated CI/CD pipeline was created using GitHub Actions.
+
+![test github](https://github.com/benitomartin/mlops-car-prices/assets/116911431/0d9e4858-8745-4bb1-bb1c-a6431b98cc98)
+
 ## Project Set Up
 
 1. Clone the repo:
 
    ```bash
    git clone https://github.com/benitomartin/mlops-car-prices.git
+   ```
 
 2. Create the virtual environment named `main-env` using Conda with Python version 3.9:
 
    ```bash
    conda create -n main-env python=3.9
    conda activate main-env
+   ```
 
 3. Install `setuptools` and `wheel`:
 
@@ -69,15 +88,8 @@ The project has been structured with the following folders and files:
     or
  
     make install
+    ```
 
-## Project Description
+Each project folder contains a README.md file with instructions about how to run the code. I highly recommend to create a virtual environment for each one. It is necessary to have an AWS Account, credentials, and set up the proper policies with full access to EC2, S3, ECR, Lambda and Kinesis.
 
-The dataset was downloaded from Kaggle and contains several columns with car details and prices. An Exploratory Data Analysis was performed in order to preprocess numerical and categorical features and select scalers and encoders for the preprocessing pipeline. The model is being selected after performing a GridSearch with several regrssion models. The best models reach an R2 of around 0.9, mainly RandomForestRegressor and GradientBoostingRegressor.
 
-![notebook](https://github.com/benitomartin/mlops-car-prices/assets/116911431/cbaccce2-e3ed-4480-a715-3060d56465af)
-![grafana_dashboard](https://github.com/benitomartin/mlops-car-prices/assets/116911431/6201ae65-383b-44bf-b30f-11ad2b75bf34)
-
-The models have been tested and deployed initially using MLflow and Prefect and monitored in Grafana and Adminer Database. Later a project infrastructure has been set up in Terraform with modules in AWS like Kinesis Streams (Producer & Consumer), Lambda (Serving API), S3 Bucket (Model artifacts) and ECR (Image Registry)
-
-![Deployment Prefect UI](https://github.com/benitomartin/mlops-car-prices/assets/116911431/63053687-7fe7-4eb1-876d-8416cccf5645)
-![Artifacts Prefect UI](https://github.com/benitomartin/mlops-car-prices/assets/116911431/ec8a3fab-53c2-4a23-a41d-f5b8c4570f60)
