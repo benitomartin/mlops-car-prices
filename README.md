@@ -106,8 +106,8 @@ The entire project was developed using Anaconda Powershell Prompt, so some of th
 - :white_check_mark: Model monitoring: Basic model monitoring that calculates and reports metrics
 - :white_check_mark: Reproducibility: Instructions are clear, it's easy to run the code, and it works. The versions for all the dependencies are specified.
 - :white_check_mark:Best practices
-    * :white_check_mark: There are unit tests 
+    * There are unit tests 
     * [X] There is an integration test 
-    * [ ] Linter and/or code formatter are used 
-    * [ ] There's a Makefile 
-    * [ ] There's a CI/CD pipeline 
+    * [X] Linter and/or code formatter are used 
+    * [X] There's a Makefile 
+    * [X] There's a CI/CD pipeline 
