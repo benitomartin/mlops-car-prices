@@ -28,13 +28,13 @@ Below you can find some instructions to understand the project content. Feel fre
 
 ## Project Structure
 
-The project has been structured with the following folders:
+The project has been structured with the following folders and files:
 
 - `.github`: contains the CI/CD files (GitHub Actions)
 - `data`: dataset and test sample for testing the model
 - `integration_tests`: prediction integration test with docker compose
 - `lamdba`: test of the lambda handler with and w/o docker
-- `model`: full pipeline from preporcessing till prediction wsing MLflow, Prefect, Grafana, Adminer and docker compose 
+- `model`: full pipeline from preporcessing till prediction and monitoring using MLflow, Prefect, Grafana, Adminer and docker compose
 - `notebooks`: EDA and Modeling performed at the beginning of the project to stablish a baseline
 - `tests`: unit tests
 - `terraform`: IaC stream-based pipeline infrastructure in AWS using Terraform
@@ -72,10 +72,12 @@ The project has been structured with the following folders:
 
 ## Project Description
 
-The dataset was downloaded from Kaggle and contains several columns with car details and prices. An Exploratory Data Analysis was performed in order to preprocess numerical and categorical features and select scalers and encoders for the preprocessing pipeline
+The dataset was downloaded from Kaggle and contains several columns with car details and prices. An Exploratory Data Analysis was performed in order to preprocess numerical and categorical features and select scalers and encoders for the preprocessing pipeline. The model is being selected after performing a GridSearch with several regrssion models. The best models reach an R2 of around 0.9, mainly RandomForestRegressor and GradientBoostingRegressor.
 
 ![notebook](https://github.com/benitomartin/mlops-car-prices/assets/116911431/cbaccce2-e3ed-4480-a715-3060d56465af)
-
-The model is being selected after performing a GridSearch with several regrssion models. The best models reach an R2 of around 0.9, mainly RandomForestRegressor and GradientBoostingRegressor.
-
 ![grafana_dashboard](https://github.com/benitomartin/mlops-car-prices/assets/116911431/6201ae65-383b-44bf-b30f-11ad2b75bf34)
+
+The models have been tested and deployed initially using MLflow and Prefect and monitored in Grafana and Adminer Database. Later a project infrastructure has been set up in Terraform with modules in AWS like Kinesis Streams (Producer & Consumer), Lambda (Serving API), S3 Bucket (Model artifacts) and ECR (Image Registry)
+
+![Deployment Prefect UI](https://github.com/benitomartin/mlops-car-prices/assets/116911431/63053687-7fe7-4eb1-876d-8416cccf5645)
+![Artifacts Prefect UI](https://github.com/benitomartin/mlops-car-prices/assets/116911431/ec8a3fab-53c2-4a23-a41d-f5b8c4570f60)
