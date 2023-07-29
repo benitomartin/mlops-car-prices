@@ -63,7 +63,7 @@ docker run -it --rm --entrypoint="" lambda_image python -c "import sklearn; prin
 
 aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 406468071577.dkr.ecr.eu-central-1.amazonaws.com
 
-docker tag lambda_image:latest 406468071577.dkr.ecr.eu-central-1.amazonaws.com/stg_stream_model_duration_mlops-zoomcamp:latest
+docker tag lambda_image:latest 406468071577.dkr.ecr.eu-central-1.amazonaws.com/stg_ecr_model_duration_mlops-zoomcamp:latest
 
 docker push 406468071577.dkr.ecr.eu-central-1.amazonaws.com/stg_ecr_model_duration_mlops-zoomcamp:latest
 
