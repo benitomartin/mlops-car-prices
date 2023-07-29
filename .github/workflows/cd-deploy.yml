@@ -66,6 +66,7 @@ jobs:
             IMAGE_TAG: "latest"   # ${{ github.sha }}
           run: |
               docker build -t ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG} .
+              aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin ${ECR_REGISTRY}
               docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
               echo "::set-output name=image_uri::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
