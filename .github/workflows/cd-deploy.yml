@@ -65,6 +65,9 @@ jobs:
             ECR_REPOSITORY: ${{ steps.tf-apply.outputs.ecr_repo }}
             IMAGE_TAG: "latest"   # ${{ github.sha }}
           run: |
+              # Ensure the build context includes the necessary files for the Docker build
+              ls -la
+              
               docker build -t ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG} .
               aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin ${ECR_REGISTRY}
               docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG

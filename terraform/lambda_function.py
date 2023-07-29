@@ -45,7 +45,7 @@ logger.addHandler(console_handler)
 
 
 # Lambda function handler
-def lambda_handler(event):
+def lambda_handler(event, context):
     # Debug using print statements
     print("Lambda function is running.")
     print(f"Event received: {event}")
