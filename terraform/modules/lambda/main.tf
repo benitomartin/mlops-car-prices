@@ -19,7 +19,7 @@ resource "aws_lambda_function" "kinesis_lambda" {
 
   # Add a local-exec provisioner for debugging during resource creation
   provisioner "local-exec" {
-    when    = "create"
+    when    = create
     command = "echo 'Creating the Lambda function: ${var.lambda_function_name}'"
   }
 
@@ -35,7 +35,7 @@ resource "aws_lambda_function_event_invoke_config" "kinesis_lambda_event" {
 
     # Add a local-exec provisioner for debugging during resource creation
   provisioner "local-exec" {
-    when    = "create"
+    when    = create
     command = "echo 'Configuring Lambda event invoke for function: ${aws_lambda_function.kinesis_lambda.function_name}'"
   }
 
@@ -51,7 +51,7 @@ resource "aws_lambda_event_source_mapping" "kinesis_mapping" {
 
     # Add a local-exec provisioner for debugging during resource creation
   provisioner "local-exec" {
-    when    = "create"
+    when    = create
     command = "echo 'Creating event source mapping for Lambda function: ${aws_lambda_function.kinesis_lambda.function_name}'"
   }
 
