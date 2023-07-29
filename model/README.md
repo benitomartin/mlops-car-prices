@@ -11,8 +11,8 @@ This folder contains all files and folders to train, deploy, monitor the model, 
 
   - **Grafana**: This service is based on the grafana/grafana Docker image, which sets up the Grafana monitoring and visualization platform
 
-- `trained_models`: this fodler contains the models trained after running `train.py`
-- `config`: this folder contains the file `grafana_datasources.yaml` to acces the data and `grafana_dashboards.yaml` to save dashboards
+- `trained_models`: this folder contains the models trained after running `train.py`
+- `config`: this folder contains the file `grafana_datasources.yaml` to access the data and `grafana_dashboards.yaml` to save dashboards
 - `dashboards`: use this folder to save the dashboards created in Grafana
 - `docker-compose.yml`: the Docker set-up for monitoring
 - `predict.py`: the functions to run the Flask App
@@ -25,7 +25,7 @@ This folder contains all files and folders to train, deploy, monitor the model, 
 
 - Create a EC2 Instance, a S3 Bucker and a RDS Instance. Follow this video for the set up [link](https://www.youtube.com/watch?v=1ykg4YmbFVA&list=PL3MmuxUbc_hIUISrluw_A7wDSmfOhErJK&index=16&t=1383s). The configuration data for the RDS will be later used to run MLflow
 
-- Create a IAM user and access key. This must be saved in your local computer in the credentails file. This is normally located here C:\\Users\\username\\~.aws
+- Create a IAM user and access key. This must be saved in your local computer in the credentials file. This is normally located here C:\\Users\\username\\~.aws
 
 - Add to the IAM user the following policy **AmazonS3FullAccess**
 

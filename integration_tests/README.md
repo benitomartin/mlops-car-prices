@@ -75,7 +75,7 @@ logged_model = f's3://{BUCKET_NAME}/{EXPERIMENT_ID}/{RUN_ID}/artifacts/models_ml
 
 **2) Option 2**
 
-- To activate the  script
+- To activate the run.sh script
 
     ```bash
     icacls .\run.sh /grant Everyone:RX

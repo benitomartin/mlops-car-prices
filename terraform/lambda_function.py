@@ -45,7 +45,7 @@ logger.addHandler(console_handler)
 
 
 # Lambda function handler
-def lambda_handler(event, context):
+def lambda_handler(event):
     # Debug using print statements
     print("Lambda function is running.")
     print(f"Event received: {event}")
@@ -58,7 +58,7 @@ def lambda_handler(event, context):
     event_json = json.dumps(event)
 
     # Call the model service with the JSON string
-    prediction = model_service.lambda_handler(event_json)
+    prediction = model_service.lambda_handler(event_json, None)
 
     # Log the prediction value
     logger.debug(f"Prediction: {prediction}")
