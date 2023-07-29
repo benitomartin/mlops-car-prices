@@ -8,6 +8,8 @@ RUN pip install -r requirements.txt
 
 # Copy the lambda function code and the .env file
 COPY [ "lambda_function.py", "./" ]
-COPY .env .
+# COPY .env .
 
 CMD [ "lambda_function.lambda_handler" ]
+
+

@@ -43,8 +43,9 @@ except Exception as e:
 kinesis_client = boto3.client('kinesis')
 
 
-PREDICTIONS_STREAM_NAME =  os.getenv("PREDICTIONS_STREAM_NAME", "car_events")
+PREDICTIONS_STREAM_NAME =  os.getenv("PREDICTIONS_STREAM_NAME", "ride_predictions")
 TEST_RUN = os.getenv('TEST_RUN', 'False') == 'True'
+
 
 
 def clean_data(data_df: pd.DataFrame) -> pd.DataFrame:
@@ -122,7 +123,9 @@ def lambda_handler(event, context):
             logging.info("Generated Prediction Event: {}".format(json.dumps(prediction_event)))
 
 
-            
+            # TEST_RUN is False: it proceeds to put the prediction_event into the specified 
+            # Kinesis stream and adds the prediction_event to the prediction_events list. 
+            # If TEST_RUN is, this block is skipped, 
             if not TEST_RUN:
                 kinesis_client.put_record(StreamName=PREDICTIONS_STREAM_NAME,
                                         Data=json.dumps(prediction_event),
@@ -131,8 +134,6 @@ def lambda_handler(event, context):
                                         
                 prediction_events.append(prediction_event)
             
-        # Log the prediction events before returning the response
-
 
         return {
              'Prediction Events': prediction_events,

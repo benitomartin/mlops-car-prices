@@ -177,8 +177,10 @@ def put_kinesis_record(kinesis_client, prediction_stream_name: str, prediction_e
 
 def create_kinesis_callback(prediction_stream_name: str, test_run: bool) -> Callable:
     if not test_run:
+        # If test_run is False, create a Kinesis client and return a callback function
         kinesis_client = create_kinesis_client()
         return lambda prediction_event: put_kinesis_record(kinesis_client, prediction_stream_name, prediction_event)
+    # If test_run is True, return a dummy callback function that does nothing
     return lambda prediction_event: None
 
 
