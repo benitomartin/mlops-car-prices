@@ -53,8 +53,8 @@ The dataset was obtained from Kaggle and contains various columns with car detai
 
 Afterwards, the models underwent testing and deployment using MLflow and Prefect. Monitoring of the models was established through Grafana and Adminer Database. Subsequently, a project infrastructure was set up in Terraform, utilizing AWS modules such as Kinesis Streams (Producer & Consumer), Lambda (Serving API), S3 Bucket (Model artifacts), and ECR (Image Registry).
 
-![Deployment Prefect UI](https://github.com/benitomartin/mlops-car-prices/assets/116911431/63053687-7fe7-4eb1-876d-8416cccf5645)
-![Artifacts Prefect UI](https://github.com/benitomartin/mlops-car-prices/assets/116911431/ec8a3fab-53c2-4a23-a41d-f5b8c4570f60)
+![Deployment Prefect UI](https://github.com/benitomartin/mlops-car-prices/assets/116911431/
+![manual_deploy_cloudwatch2](https://github.com/benitomartin/mlops-car-prices/assets/116911431/78ce8263-dd8a-4b09-b092-620b3988de99)
 
 Finally, to streamline the development process, a fully automated CI/CD pipeline was created using GitHub Actions.
 
@@ -90,6 +90,7 @@ Finally, to streamline the development process, a fully automated CI/CD pipeline
     make install
     ```
 
-Each project folder contains a README.md file with instructions about how to run the code. I highly recommend to create a virtual environment for each one. It is necessary to have an AWS Account, credentials, and set up the proper policies with full access to EC2, S3, ECR, Lambda and Kinesis.
+In each project folder, you'll find a README.md file providing detailed instructions on how to run the code. To ensure a smooth experience, I strongly advise creating a virtual environment for each project. Additionally, please note that having an AWS Account and setting up appropriate policies with full access to EC2, S3, ECR, Lambda, and Kinesis is necessary for the projects to function properly. Proper credentials must also be configured to interact with AWS services.
 
+The entire project was developed using Anaconda Powershell Prompt, so some of the commands and configurations provided in this context may not be directly applicable to other shells. Please be aware of this when attempting to replicate the project in a different shell environment.
 
