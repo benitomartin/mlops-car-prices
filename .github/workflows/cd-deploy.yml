@@ -8,10 +8,10 @@ on:
     branches:
       - main
       - develop
-    # paths:
-    #   - './**'
-    #   - './terraform/**'
-    #   - './integration_tests/**'
+    paths:
+      - './**'
+      - './terraform/**'
+      - './integration_tests/**'
 
 
 jobs:
