@@ -26,6 +26,24 @@ Below you can find some instructions to understand the project content. Feel fre
 ![Grafana](https://img.shields.io/badge/grafana-%23F46800.svg?style=for-the-badge&logo=grafana&logoColor=white)
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
 
+## Project Structure
+
+The project has been structured with the following folders:
+
+- `.github`: contains the CI/CD files (GitHub Actions)
+- `data`: dataset and test sample for testing the model
+- `integration_tests`: prediction integration test with docker compose
+- `lamdba`: test of the lambda handler with and w/o docker
+- `model`: full pipeline from preporcessing till prediction wsing MLflow, Prefect, Grafana, Adminer and docker compose 
+- `notebooks`: EDA and Modeling performed at the beginning of the project to stablish a baseline
+- `tests`: unit tests
+- `terraform`: IaC stream-based pipeline infrastructure in AWS using Terraform
+- `Makefile`: set of execution tasks
+- `pyproject.toml`: linting and formatting
+- `setup.py`: project installation module
+- `requirements.txt`: project requirements
+
+
 ## Project Set Up
 
 1. Clone the repo:
@@ -53,5 +71,3 @@ Below you can find some instructions to understand the project content. Feel fre
  
     make install
 
-## Project Structure
- CI CD
