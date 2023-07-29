@@ -45,17 +45,17 @@ The project has been structured with the following folders and files:
 
 ## Project Description
 
-The dataset was obtained from Kaggle and contains various columns with car details and prices. To prepare the data for modeling, an Exploratory Data Analysis was conducted to preprocess numerical and categorical features, and suitable scalers and encoders were chosen for the preprocessing pipeline. Subsequently, a GridSearch was performed to select the best regression models, with RandomForestRegressor and GradientBoostingRegressor being the top performers, achieving an R2 value of approximately 0.9.
+The dataset was obtained from Kaggle and contains various columns with car details and prices. To prepare the data for modeling, an **Exploratory Data Analysis** was conducted to preprocess numerical and categorical features, and suitable scalers and encoders were chosen for the preprocessing pipeline. Subsequently, a **GridSearch** was performed to select the best regression models, with RandomForestRegressor and GradientBoostingRegressor being the top performers, achieving an R2 value of approximately 0.9.
 
 ![notebook](https://github.com/benitomartin/mlops-car-prices/assets/116911431/cbaccce2-e3ed-4480-a715-3060d56465af)
 ![grafana_dashboard](https://github.com/benitomartin/mlops-car-prices/assets/116911431/6201ae65-383b-44bf-b30f-11ad2b75bf34)
 
-Afterwards, the models underwent testing, model registry and deployment using MLflow and Prefect. Monitoring of the models was established through Grafana and Adminer Database. Subsequently, a project infrastructure was set up in Terraform, utilizing AWS modules such as Kinesis Streams (Producer & Consumer), Lambda (Serving API), S3 Bucket (Model artifacts), and ECR (Image Registry).
+Afterwards, the models underwent testing, model registry and deployment using **MLflow**, **Prefect** and **Flask**. Monitoring of the models was established through **Grafana** and **Adminer** Database. Subsequently, a project infrastructure was set up in **Terraform**, utilizing **AWS** modules such as Kinesis Streams (Producer & Consumer), Lambda (Serving API), S3 Bucket (Model artifacts), and ECR (Image Registry).
 
 ![Deployment Prefect UI](https://github.com/benitomartin/mlops-car-prices/assets/116911431/90e7f32c-25ce-4be7-bf38-ba266ca68fb2)
 ![manual_deploy_cloudwatch2](https://github.com/benitomartin/mlops-car-prices/assets/116911431/78ce8263-dd8a-4b09-b092-620b3988de99)
 
-Finally, to streamline the development process, a fully automated CI/CD pipeline was created using GitHub Actions.
+Finally, to streamline the development process, a fully automated **CI/CD** pipeline was created using GitHub Actions.
 
 ![test github](https://github.com/benitomartin/mlops-car-prices/assets/116911431/0d9e4858-8745-4bb1-bb1c-a6431b98cc98)
 
