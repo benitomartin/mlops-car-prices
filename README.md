@@ -43,7 +43,6 @@ The project has been structured with the following folders and files:
 - `setup.py`: project installation module
 - `requirements.txt`: project requirements
 
-
 ## Project Description
 
 The dataset was obtained from Kaggle and contains various columns with car details and prices. To prepare the data for modeling, an Exploratory Data Analysis was conducted to preprocess numerical and categorical features, and suitable scalers and encoders were chosen for the preprocessing pipeline. Subsequently, a GridSearch was performed to select the best regression models, with RandomForestRegressor and GradientBoostingRegressor being the top performers, achieving an R2 value of approximately 0.9.
@@ -90,11 +89,9 @@ Finally, to streamline the development process, a fully automated CI/CD pipeline
     make install
     ```
 
-In each project folder, you'll find a README.md file providing detailed instructions on how to run the code. To ensure a smooth experience, I strongly advise creating a virtual environment for each project. Additionally, please note that having an AWS Account and setting up appropriate policies with full access to EC2, S3, ECR, Lambda, and Kinesis is necessary for the projects to function properly. Proper credentials must also be configured to interact with AWS services.
+Each project folder contains a README.md file with instructions about how to run the code. I highly recommend creating a virtual environment for each one. Additionally, please note that an AWS Account, credentials, and proper policies with full access to EC2, S3, ECR, Lambda, and Kinesis are necessary for the projects to function correctly. Make sure to configure the appropriate credentials to interact with AWS services.
 
 The entire project was developed using Anaconda Powershell Prompt, so some of the commands and configurations provided in this context may not be directly applicable to other shells. Please be aware of this when attempting to replicate the project in a different shell environment.
-
-
 
 ## Project Check List
 
@@ -106,8 +103,8 @@ The entire project was developed using Anaconda Powershell Prompt, so some of th
 - :white_check_mark: Model monitoring: Basic model monitoring that calculates and reports metrics
 - :white_check_mark: Reproducibility: Instructions are clear, it's easy to run the code, and it works. The versions for all the dependencies are specified.
 - :white_check_mark:Best practices:
-    * [X] There are unit tests 
-    * [X] There is an integration test 
-    * [X] Linter and/or code formatter are used 
-    * [X] There's a Makefile 
-    * [X] There's a CI/CD pipeline 
+        *[X] There are unit tests
+        * [X] There is an integration test
+        *[X] Linter and/or code formatter are used
+        * [X] There's a Makefile
+        * [X] There's a CI/CD pipeline
