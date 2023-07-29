@@ -47,42 +47,42 @@ logged_model = f's3://{BUCKET_NAME}/{EXPERIMENT_ID}/{RUN_ID}/artifacts/models_ml
 
 **1) Option 1**
 
-    - Open Docker Desktop and build the image:
+- Open Docker Desktop and build the image:
 
-        ```bash
-        docker-compose up -d or docker-compose up --build
-        ```
+    ```bash
+    docker-compose up -d or docker-compose up --build
+    ```
 
-    - Check the container name in Docker Desktop (for example: integration_tests-my-app-1)
+- Check the container name in Docker Desktop (for example: integration_tests-my-app-1)
 
-    - Run the integration test with the container name (the prediction will be logged in the other terminal):
+- Run the integration test with the container name (the prediction will be logged in the other terminal):
 
-        ```bash
-        docker exec -it integration_tests-my-app-1 pytest test_integration.py
-        ```
+    ```bash
+    docker exec -it integration_tests-my-app-1 pytest test_integration.py
+    ```
 
-    - Run the prediction test in another terminal:
+- Run the prediction test in another terminal:
 
-        ```bash
-        docker exec -it my-app pytest test_integration.py
-        ```
+    ```bash
+    docker exec -it my-app pytest test_integration.py
+    ```
 
-    - To stop the container run:
+- To stop the container run:
 
-        ```bash
-        docker-compose down
-        ```
+    ```bash
+    docker-compose down
+    ```
 
 **2) Option 2**
 
-    - To activate the  script
+- To activate the  script
 
-        ```bash
-        icacls .\run.sh /grant Everyone:RX
-        ```
+    ```bash
+    icacls .\run.sh /grant Everyone:RX
+    ```
 
-    - Run the script. You can uncomment the last line of the script so that the bash window won't close automatically. However, for the CI/CD test, the line must be commented:
+- Run the script. You can uncomment the last line of the script so that the bash window won't close automatically. However, for the CI/CD test, the line must be commented:
 
-        ```bash
-        .\run.sh
-        ```
+    ```bash
+    .\run.sh
+    ```
