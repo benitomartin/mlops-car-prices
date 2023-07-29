@@ -51,7 +51,7 @@ The dataset was obtained from Kaggle and contains various columns with car detai
 ![notebook](https://github.com/benitomartin/mlops-car-prices/assets/116911431/cbaccce2-e3ed-4480-a715-3060d56465af)
 ![grafana_dashboard](https://github.com/benitomartin/mlops-car-prices/assets/116911431/6201ae65-383b-44bf-b30f-11ad2b75bf34)
 
-Afterwards, the models underwent testing and deployment using MLflow and Prefect. Monitoring of the models was established through Grafana and Adminer Database. Subsequently, a project infrastructure was set up in Terraform, utilizing AWS modules such as Kinesis Streams (Producer & Consumer), Lambda (Serving API), S3 Bucket (Model artifacts), and ECR (Image Registry).
+Afterwards, the models underwent testing, model registry and deployment using MLflow and Prefect. Monitoring of the models was established through Grafana and Adminer Database. Subsequently, a project infrastructure was set up in Terraform, utilizing AWS modules such as Kinesis Streams (Producer & Consumer), Lambda (Serving API), S3 Bucket (Model artifacts), and ECR (Image Registry).
 
 ![Deployment Prefect UI](https://github.com/benitomartin/mlops-car-prices/assets/116911431/90e7f32c-25ce-4be7-bf38-ba266ca68fb2)
 ![manual_deploy_cloudwatch2](https://github.com/benitomartin/mlops-car-prices/assets/116911431/78ce8263-dd8a-4b09-b092-620b3988de99)
@@ -62,7 +62,7 @@ Finally, to streamline the development process, a fully automated CI/CD pipeline
 
 ## Project Set Up
 
-1. Clone the repo:
+1. Clone the repo (or download as zip):
 
    ```bash
    git clone https://github.com/benitomartin/mlops-car-prices.git
@@ -94,3 +94,13 @@ In each project folder, you'll find a README.md file providing detailed instruct
 
 The entire project was developed using Anaconda Powershell Prompt, so some of the commands and configurations provided in this context may not be directly applicable to other shells. Please be aware of this when attempting to replicate the project in a different shell environment.
 
+
+
+- ### Data Pre-processing, Feature engineering, Model training, Validation and Prediction
+    - :white_check_mark: Choose/collect dataset
+    - :white_check_mark: Convert huge raw CSV to parquet file formats
+    - :white_check_mark: Use Kaggle to store preprocessed datasets
+    - :white_check_mark: Preprocess and feature engineer
+        - :white_check_mark: Implement logging
+    - :white_check_mark: Prepare dataset for model training
+    - :white_check_mark: Implement LGBM model
