@@ -13,7 +13,7 @@ Below you can find some instructions to understand the project content and at th
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 ![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
-![Python 3.9](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
 ![Matplotlib](https://img.shields.io/badge/Matplotlib-%23d9ead3.svg?style=for-the-badge&logo=Matplotlib&logoColor=black)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white)
@@ -30,18 +30,18 @@ Below you can find some instructions to understand the project content and at th
 
 The project has been structured with the following folders and files:
 
-- `.github`: contains the CI/CD files (GitHub Actions)
-- `data`: dataset and test sample for testing the model
-- `integration_tests`: prediction integration test with docker compose
-- `lamdba`: test of the lambda handler with and w/o docker
-- `model`: full pipeline from preporcessing till prediction and monitoring using MLflow, Prefect, Grafana, Adminer and docker compose
-- `notebooks`: EDA and Modeling performed at the beginning of the project to stablish a baseline
-- `tests`: unit tests
-- `terraform`: IaC stream-based pipeline infrastructure in AWS using Terraform
-- `Makefile`: set of execution tasks
-- `pyproject.toml`: linting and formatting
-- `setup.py`: project installation module
-- `requirements.txt`: project requirements
+- `.github:` contains the CI/CD files (GitHub Actions)
+- `data:` dataset and test sample for testing the model
+- `integration_tests:` prediction integration test with docker compose
+- `lamdba:` test of the lambda handler with and w/o docker
+- `model:` full pipeline from preporcessing till prediction and monitoring using MLflow, Prefect, Grafana, Adminer and docker compose
+- `notebooks:` EDA and Modeling performed at the beginning of the project to stablish a baseline
+- `tests:` unit tests
+- `terraform:` IaC stream-based pipeline infrastructure in AWS using Terraform
+- `Makefile:` set of execution tasks
+- `pyproject.toml:` linting and formatting
+- `setup.py:` project installation module
+- `requirements.txt:` project requirements
 
 ## Project Description
 
@@ -60,6 +60,8 @@ Finally, to streamline the development process, a fully automated CI/CD pipeline
 ![test github](https://github.com/benitomartin/mlops-car-prices/assets/116911431/0d9e4858-8745-4bb1-bb1c-a6431b98cc98)
 
 ## Project Set Up
+
+The Python version used for this project is Python 3.9.
 
 1. Clone the repo (or download as zip):
 
