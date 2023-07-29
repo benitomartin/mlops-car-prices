@@ -6,7 +6,7 @@ This project is currently being developed as part [MLOps Zoomcamp](https://githu
 
 The dataset used has been downloaded from [Kaggle](https://www.kaggle.com/datasets/hellbuoy/car-price-prediction) and a preliminary data analysis was performed (see [notebooks](https://github.com/benitomartin/mlops-car-prices/tree/main/notebooks) folder), to get some insights for the further project development.
 
-Below you can find some instructions to understand the project content. Feel free to clone this repo :wink:
+Below you can find some instructions to understand the project content and at the end of this file a check list for the peer-to-peer review. Feel free to clone this repo :wink:
 
 ## Tech Stack
 
@@ -93,7 +93,7 @@ Each project folder contains a README.md file with instructions about how to run
 
 The entire project was developed using Anaconda Powershell Prompt, so some of the commands and configurations provided in this context may not be directly applicable to other shells. Please be aware of this when attempting to replicate the project in a different shell environment.
 
-## Project Check List
+## Project Check List Review
 
 - :white_check_mark: Problem description: The problem is well described and it's clear what the problem the project solves
 - :white_check_mark: Cloud: The project is developed on the cloud and IaC tools are used for provisioning the infrastructure
@@ -105,8 +105,8 @@ The entire project was developed using Anaconda Powershell Prompt, so some of th
 - :white_check_mark:Best practices
     * [X] There are unit tests
     * [X] There is an integration test
-    * [X] Linter and/or code formatter are used
-    * [X] There's a Makefile
-    * [X] There's a CI/CD pipeline
+    * [X] Linter and code formatter are used
+    * [X] There is a Makefile
+    * [X] Thereis a CI/CD pipeline
 
     
