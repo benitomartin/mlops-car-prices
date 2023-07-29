@@ -75,3 +75,4 @@ The project has been structured with the following folders:
 The dataset was downloaded from Kaggle and contains several columns with car details and prices. An Exploratory Data Analysis was performed in order to preprocess numerical and categorical features and select scalers and encoders for the preprocessing pipeline
 
 ![notebook](https://github.com/benitomartin/mlops-car-prices/assets/116911431/cbaccce2-e3ed-4480-a715-3060d56465af)
+
