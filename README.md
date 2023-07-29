@@ -13,7 +13,7 @@ Below you can find some instructions to understand the project content and at th
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 ![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Python 3.9](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
 ![Matplotlib](https://img.shields.io/badge/Matplotlib-%23d9ead3.svg?style=for-the-badge&logo=Matplotlib&logoColor=black)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white)
@@ -95,11 +95,13 @@ The entire project was developed using Anaconda Powershell Prompt, so some of th
 
 ## Project Check List Review
 
+This is a preliminary check-list for the peer-to-peer review.
+
 - :white_check_mark: **Problem description**: The problem is well described and it's clear what the problem the project solves
 - :white_check_mark: **Cloud**: The project is developed on the cloud and IaC tools are used for provisioning the infrastructure
 - :white_check_mark: **Experiment tracking and model registry**: Both experiment tracking and model registry are used
-- :white_check_mark: **Workflow orchestration: Fully deployed workflow
-- :white_check_mark: **Model deployment**: The model deployment code is containerized and could be deployed to cloud or special tools for model deployment are used
+- :white_check_mark: **Workflow orchestration**: Fully deployed workflow
+- :white_check_mark: **Model deployment**: The model deployment code is containerized and ca be deployed to cloud
 - :white_check_mark: **Model monitoring**: Basic model monitoring that calculates and reports metrics
 - :white_check_mark: **Reproducibility**: Instructions are clear, it's easy to run the code, and it works. The versions for all the dependencies are specified.
 - :white_check_mark:**Best practices**:
