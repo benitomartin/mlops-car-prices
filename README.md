@@ -53,7 +53,7 @@ The dataset was obtained from Kaggle and contains various columns with car detai
 
 Afterwards, the models underwent testing and deployment using MLflow and Prefect. Monitoring of the models was established through Grafana and Adminer Database. Subsequently, a project infrastructure was set up in Terraform, utilizing AWS modules such as Kinesis Streams (Producer & Consumer), Lambda (Serving API), S3 Bucket (Model artifacts), and ECR (Image Registry).
 
-![Deployment Prefect UI](https://github.com/benitomartin/mlops-car-prices/assets/116911431/)
+![Deployment Prefect UI](https://github.com/benitomartin/mlops-car-prices/assets/116911431/90e7f32c-25ce-4be7-bf38-ba266ca68fb2)
 ![manual_deploy_cloudwatch2](https://github.com/benitomartin/mlops-car-prices/assets/116911431/78ce8263-dd8a-4b09-b092-620b3988de99)
 
 Finally, to streamline the development process, a fully automated CI/CD pipeline was created using GitHub Actions.
