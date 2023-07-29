@@ -93,6 +93,10 @@ jobs:
           echo "BASE_DIR: $BASE_DIR"
           echo "DATA_PATH: $DATA_PATH"
 
+      - name: Debug Terraform Directory
+        run: |
+          ls -l ./terraform
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
