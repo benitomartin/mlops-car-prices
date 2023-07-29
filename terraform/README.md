@@ -113,4 +113,4 @@ aws lambda list-event-source-mappings --function-name stg_prediction_lambda_mlop
 
 
 
- CI CD
+ CI CD. lower case for folder is important
