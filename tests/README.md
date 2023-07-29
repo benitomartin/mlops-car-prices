@@ -6,4 +6,4 @@ This folder contains the unittest of two functions: data cleaning and preprocess
    pytest
    ```
 
-Alternativelly, you can run it in VS Code or from the root directory with `make test`.
+Alternativelly, you can run it in VS Code or from the root directory with `make test`
