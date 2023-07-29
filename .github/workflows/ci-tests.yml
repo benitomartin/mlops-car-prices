@@ -110,4 +110,5 @@ jobs:
       - name: TF plan
         working-directory: 'terraform'
         run: |
-          terraform init -backend-config="key=mlops-zoomcamp-prod.tfstate" --reconfigure $$ terraform plan -var-file=vars/prod.tfvars
+          terraform init -backend-config="key=mlops-zoomcamp-prod.tfstate" --reconfigure
+          terraform plan -var-file=vars/prod.tfvars
