@@ -7,43 +7,50 @@ The code here is the IaC for the deployment in AWS using Terraform. the first st
 conda install -c conda-forge terraform
 ```
 
-Then initilize Terraform and apply the configuration:
+Then follow the next steps:
 
-```bash
-terraform init
-```
+- Then initilize Terraform and apply the configuration:
 
-```bash
-terraform plan -var-file=C:\absolute_path_to\mlops-car-prices\terraform\vars\stg.tfvars
-```
+  ```bash
+  terraform init
+  ```
 
-```bash
-terraform apply -var-file=C:\absolute_path_to\mlops-car-prices\terraform\vars\stg.tfvars
-```
+- Plan and apply Terraform adding the absolute path:
 
-If any error push the Dockerimage
+  ```bash
+  terraform plan -var-file=C:\absolute_path_to\mlops-car-prices\terraform\vars\stg.tfvars
+  ```
 
-```bash
-docker build --no-cache -t lambda_image:latest .
-```
+  ```bash
+  terraform apply -var-file=C:\absolute_path_to\mlops-car-prices\terraform\vars\stg.tfvars
+  ```
 
-```bash
-docker tag lambda_image:latest ${AWS_ID}.dkr.${AWS_DEFAULT_REGION}.amazonaws.com.stg_ecr_model_duration_mlops-zoomcamp:latest
-```
+- If any error push the Dockerimage:
 
-```bash
-docker push ${AWS_ID}.dkr.${AWS_DEFAULT_REGION}.amazonaws.com.stg_ecr_model_duration_mlops-zoomcamp:latest
-```
+  ```bash
+  docker build --no-cache -t lambda_image:latest .
+  ```
 
-One the whole set up is done, you can send a record to AWS:
+  ```bash
+  docker tag lambda_image:latest ${AWS_ID}.dkr.${AWS_DEFAULT_REGION}.amazonaws.com.stg_ecr_model_duration_mlops-zoomcamp:latest
+  ```
 
-```bash
-./deploy-manual.sh
-```
+  ```bash
+  docker push ${AWS_ID}.dkr.${AWS_DEFAULT_REGION}.amazonaws.com.stg_ecr_model_duration_mlops-zoomcamp:latest
+  ```
 
-```bash
-aws kinesis put-record --stream-name stg_car_events-mlops-zoomcamp --partition-key 1 --cli-binary-format raw-in-base64-out --data '{\"car_ID\": 10, \"symboling\": 0, \"CarName\": \"audi 5000s (diesel)\", \"fueltype\": \"gas\", \"aspiration\": \"std\", \"doornumber\": \"two\", \"carbody\": \"hatchback\", \"drivewheel\": \"4wd\", \"enginelocation\": \"front\", \"wheelbase\": 99.5, \"carlength\": 178.2, \"carwidth\": 67.9, \"carheight\": 52, \"curbweight\": 3053, \"enginetype\": \"ohc\", \"cylindernumber\": \"five\", \"enginesize\": 131, \"fuelsystem\": \"mpfi\", \"boreratio\": 3.13, \"stroke\": 3.4, \"compressionratio\": 7, \"horsepower\": 160, \"peakrpm\": 5500, \"citympg\": 16, \"highwaympg\": 22, \"price\": 17859.17}'
-```
+- One the whole set up is done, you can send a record to AWS. Go to the scripts folder, add your `BUCKET_NAME` and `RUN_ID` and run:
 
-The result shall be visible in AWS CloudWatch
-![manual_deploy_cloudwatch2](https://github.com/benitomartin/mlops-car-prices/assets/116911431/6c860c98-dd24-4d23-bf16-7e9077557716)
+  ```bash
+  ./deploy-manual.sh
+  ```
+
+- Then put a record in the Kinesis Stream:
+
+  ```bash
+  aws kinesis put-record --stream-name stg_car_events-mlops-zoomcamp --partition-key 1 --cli-binary-format raw-in-base64-out --data '{\"car_ID\": 10, \"symboling\": 0, \"CarName\": \"audi 5000s (diesel)\", \"fueltype\": \"gas\", \"aspiration\": \"std\", \"doornumber\": \"two\", \"carbody\": \"hatchback\", \"drivewheel\": \"4wd\", \"enginelocation\": \"front\", \"wheelbase\": 99.5, \"carlength\": 178.2, \"carwidth\": 67.9, \"carheight\": 52, \"curbweight\": 3053, \"enginetype\": \"ohc\", \"cylindernumber\": \"five\", \"enginesize\": 131, \"fuelsystem\": \"mpfi\", \"boreratio\": 3.13, \"stroke\": 3.4, \"compressionratio\": 7, \"horsepower\": 160, \"peakrpm\": 5500, \"citympg\": 16, \"highwaympg\": 22, \"price\": 17859.17}'
+  ```
+
+- The result shall be visible in AWS CloudWatch:
+
+  ![manual_deploy_cloudwatch2](https://github.com/benitomartin/mlops-car-prices/assets/116911431/6c860c98-dd24-4d23-bf16-7e9077557716)
