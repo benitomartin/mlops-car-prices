@@ -62,6 +62,17 @@ class ModelService:
         self.callbacks = callbacks or []
 
     def clean_data(self, data_df: pd.DataFrame) -> pd.DataFrame:
+        """
+        Clean the data DataFrame by dropping unnecessary columns, mapping 'cylindernumber' values, and removing duplicates.
+
+        Parameters:
+            data_df (pd.DataFrame): The DataFrame containing the data to be cleaned.
+
+        Returns:
+            pd.DataFrame: The cleaned DataFrame.
+        """
+
+
         # Drop unnecessary columns 'car_ID' and 'CarName'
         data_df.drop(columns=['car_ID', 'CarName'], inplace=True)
         
@@ -78,6 +89,15 @@ class ModelService:
         return data_df
 
     def split_dataframe(self, data_df: pd.DataFrame) -> pd.DataFrame:
+        """
+        Split the data DataFrame into feature data (X) and target variable data (y).
+
+        Parameters:
+            data_df (pd.DataFrame): The DataFrame containing the data.
+
+        Returns:
+            pd.DataFrame: The DataFrame containing feature columns (all columns except 'price').
+        """
         # Separate the feature data (X) from the target variable data (y)
         X_test = data_df.drop(columns=["price"])  # DataFrame containing feature columns (all columns except 'price')
 
@@ -85,7 +105,18 @@ class ModelService:
 
 
     def predict(self, X_test: pd.DataFrame) -> pd.DataFrame:
+        """
+        Make predictions using the pre-trained model.
+
+        Parameters:
+            X_test (pd.DataFrame): The DataFrame containing the features for prediction.
+
+        Returns:
+            pd.DataFrame: The DataFrame containing the predicted target variable values.
+        """
+                
         # Make predictions using the pre-trained model
+
         y_pred = self.model.predict(X_test)
         
         # Convert the NumPy array to a Python list
@@ -112,20 +143,18 @@ class ModelService:
         try:
             for record in event["Records"]:
 
-                # car_data = record["kinesis"]["data"]
-
-                # FROM HERE
+                # Decode Data
                 encoded_data = record["kinesis"]["data"]
                 decoded_data = base64.b64decode(encoded_data).decode('utf-8')
-                print(f"decoded data: {decoded_data}")
+                print(f"Decoded data: {decoded_data}")
 
+
+                # Decoded Data
                 car_event = json.loads(decoded_data)
                 
                 print(f"car_data: {car_event}")
 
                 car_data = car_event["data"]
-                # TO HERE
-
 
                 real_price = car_data['price']
                                
@@ -171,21 +200,6 @@ class ModelService:
 
 
 
-# def put_kinesis_record(kinesis_client, prediction_stream_name: str, prediction_event: Dict[str, Any]):
-#     """
-#     Put a prediction event into a Kinesis stream.
-
-#     Parameters:
-#         kinesis_client: The AWS Kinesis client.
-#         prediction_stream_name (str): The name of the Kinesis stream for predictions.
-#         prediction_event (dict): The prediction event to be put into the stream.
-#     """
-#     real_price = prediction_event['real_price']
-#     kinesis_client.put_record(
-#         StreamName=prediction_stream_name,
-#         Data=json.dumps(prediction_event),
-#         PartitionKey=str(real_price) )
-    
 
 class KinesisCallback:
     """
@@ -234,8 +248,6 @@ class KinesisCallback:
         )
 
 
-
-
 def create_kinesis_client():
     """
     Create an AWS Kinesis client.
@@ -252,29 +264,19 @@ def create_kinesis_client():
     return boto3.client('kinesis', endpoint_url=endpoint_url)
 
 
-# def init(prediction_stream_name: str, run_id: str, test_run: bool):
-#     """
-#     Initialize the model service.
-
-#     Parameters:
-#         prediction_stream_name (str): The name of the Kinesis stream for predictions.
-#         run_id (str): The ID of the MLflow run.
-#         test_run (bool): Whether it's a test run or not.
-
-#     Returns:
-#         ModelService: The initialized model service.
-#     """
-        
-#     model = load_model(run_id)
-
-#     kinesis_callback = create_kinesis_callback(prediction_stream_name, test_run)
-#     callbacks = [kinesis_callback]
-
-#     model_service = ModelService(model=model, model_version=run_id, callbacks=callbacks)
-
-#     return model_service
-
 def init(prediction_stream_name: str, run_id: str, test_run: bool):
+    """
+    Initialize the model service with the pre-trained model and callbacks.
+
+    Parameters:
+        prediction_stream_name (str): The name of the Kinesis stream for prediction events.
+        run_id (str): The ID of the MLflow run used to load the pre-trained model.
+        test_run (bool): Flag indicating whether it's a test run (True) or not (False).
+
+    Returns:
+        ModelService: The initialized model service.
+    """
+    
     model = load_model(run_id)
 
     callbacks = []

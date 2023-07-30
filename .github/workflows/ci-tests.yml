@@ -4,12 +4,10 @@ on:
     branches:
       - main
       - develop
-      - terra
   pull_request:
     branches:
       - main
       - develop
-      - terra
     paths:
       # - './**'
       - './terraform/**'
