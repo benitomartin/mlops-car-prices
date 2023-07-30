@@ -1,13 +1,15 @@
 name: CI-Tests
 on:
-  # push:
-  #   branches:
-  #     - main
-  #     - develop
+  push:
+    branches:
+      - main
+      - develop
+      - terra
   pull_request:
     branches:
-      # - main
+      - main
       - develop
+      - terra
     paths:
       # - './**'
       - './terraform/**'

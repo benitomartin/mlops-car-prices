@@ -25,7 +25,7 @@ locals {
   account_id = data.aws_caller_identity.current_identity.account_id
 }
 
-# Create a Kinesis stream for ride_events using the custom module "kinesis"
+# Create a Kinesis stream for car_events using the custom module "kinesis"
 module "source_kinesis_stream" {
   source = "./modules/kinesis"
   retention_period = 48                                       # Retention period for Kinesis data (in hours)
@@ -35,7 +35,7 @@ module "source_kinesis_stream" {
 }
 
 
-# Create another Kinesis stream for ride_predictions using the custom module "kinesis"
+# Create another Kinesis stream for car_predictions using the custom module "kinesis"
 module "output_kinesis_stream" {
   source = "./modules/kinesis"
   retention_period = 48                                       # Retention period for Kinesis data (in hours)
