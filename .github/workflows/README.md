@@ -8,4 +8,4 @@ BUCKET_NAME: mlflow-tracking-remote
 EXPERIMENT_ID: 29
 ```
 
-The test will run in GitHub Actions.
+The tests will run in GitHub Actions.

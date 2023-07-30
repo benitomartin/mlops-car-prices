@@ -9,7 +9,7 @@ conda install -c conda-forge terraform
 
 Then follow the next steps:
 
-- Then initilize Terraform and apply the configuration:
+- Initialize Terraform and apply the configuration:
 
   ```bash
   terraform init
@@ -25,7 +25,7 @@ Then follow the next steps:
   terraform apply -var-file=C:\absolute_path_to\mlops-car-prices\terraform\vars\stg.tfvars
   ```
 
-- If any error push the Dockerimage:
+- If any error, push the Dockerimage:
 
   ```bash
   docker build --no-cache -t lambda_image:latest .
@@ -39,10 +39,10 @@ Then follow the next steps:
   docker push ${AWS_ID}.dkr.${AWS_DEFAULT_REGION}.amazonaws.com.stg_ecr_model_duration_mlops-zoomcamp:latest
   ```
 
-- One the whole set up is done, you can send a record to AWS. Go to the scripts folder, add your `BUCKET_NAME` and `RUN_ID` and run:
+- One the whole set up is done, you can send a record to AWS. Go to the scripts folder, add your `BUCKET_NAME` and `RUN_ID` in `deploy.sh` and run:
 
   ```bash
-  ./deploy-manual.sh
+  ./deploy.sh
   ```
 
 - Then put a record in the Kinesis Stream:
