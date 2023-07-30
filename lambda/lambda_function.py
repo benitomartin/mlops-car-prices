@@ -2,6 +2,7 @@
 
 import os
 import logging
+import base64
 import json
 import mlflow.pyfunc
 import pandas as pd
@@ -23,6 +24,9 @@ logging.basicConfig(level=logging.INFO)
 
 
 # Path to the model
+# RUN_ID = os.getenv("RUN_ID")
+# BUCKET_NAME = os.getenv("BUCKET_NAME")
+# EXPERIMENT_ID = os.getenv("EXPERIMENT_ID")
 BUCKET_NAME="mlflow-tracking-remote"
 RUN_ID="aa806b4bc4044777a0a25d5b8a24d7d5"
 EXPERIMENT_ID=29
@@ -44,7 +48,7 @@ kinesis_client = boto3.client('kinesis')
 
 
 PREDICTIONS_STREAM_NAME =  os.getenv("PREDICTIONS_STREAM_NAME", "ride_predictions")
-TEST_RUN = os.getenv('TEST_RUN', 'False') == 'True'
+TEST_RUN = os.getenv('TEST_RUN', 'False') == 'True' # Default is False
 
 
 
@@ -95,7 +99,18 @@ def lambda_handler(event, context):
     try:
         for record in event["Records"]:
 
-            car_data = record["kinesis"]["data"]
+            # car_data = record["kinesis"]["data"]
+
+            encoded_data = record["kinesis"]["data"]
+            decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+            logging.info(f"decoded data: {decoded_data}")
+
+            car_event = json.loads(decoded_data)
+            
+            logging.info(f"car_data: {car_event}")
+
+            car_data = car_event["data"]
+
 
             real_price = car_data['price']
                 
@@ -125,14 +140,14 @@ def lambda_handler(event, context):
 
             # TEST_RUN is False: it proceeds to put the prediction_event into the specified 
             # Kinesis stream and adds the prediction_event to the prediction_events list. 
-            # If TEST_RUN is, this block is skipped, 
+            # If TEST_RUN is True, this block is skipped, 
             if not TEST_RUN:
                 kinesis_client.put_record(StreamName=PREDICTIONS_STREAM_NAME,
                                         Data=json.dumps(prediction_event),
                                         PartitionKey=str(real_price)
                                         )
                                         
-                prediction_events.append(prediction_event)
+            prediction_events.append(prediction_event)
             
 
         return {

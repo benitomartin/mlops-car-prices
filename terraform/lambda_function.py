@@ -13,8 +13,7 @@ load_dotenv()
 
 # Read environment variables or use default values
 PREDICTIONS_STREAM_NAME = os.getenv('PREDICTIONS_STREAM_NAME', 'car_events')
-# RUN_ID = os.getenv('RUN_ID')
-RUN_ID="aa806b4bc4044777a0a25d5b8a24d7d5"
+RUN_ID=os.getenv('RUN_ID')
 TEST_RUN = os.getenv('TEST_RUN', 'False') == 'True'
 
 # Initialize the model service using the lambda_model module

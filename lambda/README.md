@@ -13,6 +13,14 @@ I also included a .env file in the compilation of the Dockerfile. It is needed t
 
 ## Lambda Prediction
 
+The `test_lambda.py` file contains the following variables. You can either add yours there and export them and use os.getenv, or add them in the Lambda Function in AWS. Otherwise the prediction with Dockerfile won't work.
+
+```bash
+BUCKET_NAME="mlflow-tracking-remote"
+RUN_ID="aa806b4bc4044777a0a25d5b8a24d7d5"
+EXPERIMENT_ID=29
+```
+
 To get the prediction w/o Dockerfile, just run:
 
 ```bash
@@ -31,7 +39,7 @@ docker build --no-cache -t my-lambda-prediction .
 ```
 
 ```bash
-docker run -it --rm -p 8080:8080 -e PREDICTIONS_STREAM_NAME="car_events" -e TEST_RUN="True" -e AWS_ACCESS_KEY_ID="AWS_ACCESS_KEY_ID" -e AWS_SECRET_ACCESS_KEY="AWS_SECRET_ACCESS_KEY" -e AWS_REGION="eu-central-1" my-lambda-prediction
+docker run -it --rm -p 8080:8080 -e PREDICTIONS_STREAM_NAME="car_events" -e TEST_RUN="True" -e AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} -e AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} -e AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION} my-lambda-prediction
 ```
 
 Finally in a separate terminal:
