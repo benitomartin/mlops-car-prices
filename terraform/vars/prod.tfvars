@@ -14,7 +14,7 @@ lambda_function_local_path = "./lambda_function.py"    # Local path to the Lambd
 docker_image_local_path = "./Dockerfile"               # Local path to the Dockerfile
 
 # Define the name of the Elastic Container Registry (ECR) repository for the Docker image
-ecr_repo_name = "prod_ecr_model_duration"            # Name of the ECR repository
+ecr_repo_name = "prod_stream_model_duration"            # Name of the ECR repository
 
 # Define the name of the Lambda function
 lambda_function_name = "prod_predict_lambda"         # Name of the Lambda function

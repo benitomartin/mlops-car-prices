@@ -12,7 +12,7 @@ import lambda_model
 load_dotenv()
 
 # Read environment variables or use default values
-PREDICTIONS_STREAM_NAME = os.getenv('PREDICTIONS_STREAM_NAME', 'car_events')
+PREDICTIONS_STREAM_NAME = os.getenv('PREDICTIONS_STREAM_NAME', 'car_predictions')
 RUN_ID=os.getenv('RUN_ID')
 TEST_RUN = os.getenv('TEST_RUN', 'False') == 'True'
 
@@ -44,7 +44,10 @@ logger.addHandler(console_handler)
 
 
 # Lambda function handler
-def lambda_handler(event):
+# Unused context argument is required
+# pylint: disable=unused-argument
+def lambda_handler(event, context):
+    # pylint: disable=unused-argument  
     # Debug using print statements
     print("Lambda function is running.")
     print(f"Event received: {event}")
@@ -54,10 +57,10 @@ def lambda_handler(event):
     logger.debug(f"Event received: {event}")
 
     # Convert the event to a JSON string
-    event_json = json.dumps(event)
+    # event_json = json.dumps(event)
 
     # Call the model service with the JSON string
-    prediction = model_service.lambda_handler(event_json, None)
+    prediction = model_service.lambda_handler(event)
 
     # Log the prediction value
     logger.debug(f"Prediction: {prediction}")

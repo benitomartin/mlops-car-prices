@@ -14,7 +14,7 @@ lambda_function_local_path = "./lambda_function.py"    # Local path to the Lambd
 docker_image_local_path = "./Dockerfile"               # Local path to the Dockerfile
 
 # Define the name of the Elastic Container Registry (ECR) repository for the Docker image in staging environment
-ecr_repo_name = "stg_ecr_model_duration"             # Name of the ECR repository in the staging environment
+ecr_repo_name = "stg_stream_model_duration"             # Name of the ECR repository in the staging environment
 
 # Define the name of the Lambda function in staging environment
-lambda_function_name = "stg_predict_lambda"          # Name of the Lambda function in the staging environment
+lambda_function_name = "stg_prediction_lambda"          # Name of the Lambda function in the staging environment

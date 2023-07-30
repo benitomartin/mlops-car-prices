@@ -10,15 +10,15 @@ variable "project_id" {
   default = "mlops-zoomcamp"
 }
 
-# Define the source_stream_name variable to specify the name of the Kinesis stream for ride events
+# Define the source_stream_name variable to specify the name of the Kinesis stream for car events
 variable "source_stream_name" {
-  description = "Name of the Kinesis stream for ride events"
+  description = "Name of the Kinesis stream for car events"
   # No default value provided, it should be explicitly specified during Terraform apply
 }
 
-# Define the output_stream_name variable to specify the name of the Kinesis stream for ride predictions
+# Define the output_stream_name variable to specify the name of the Kinesis stream for car predictions
 variable "output_stream_name" {
-  description = "Name of the Kinesis stream for ride predictions"
+  description = "Name of the Kinesis stream for car predictions"
   # No default value provided, it should be explicitly specified during Terraform apply
 }
 
