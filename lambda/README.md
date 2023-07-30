@@ -9,7 +9,7 @@ This folder contains the predictions using AWS Lambda and Kinesis:
 - `requirements.txt`: the requirements for the Dockerfile
 - `results_printouts`: some print outs of the prediction
 
-I also included a .env file in the compilation of the Dockerfile. It is needed to add the credentials AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY in case it is not locally saved. A
+I also included a .env file in the compilation of the Dockerfile. It is needed to add the credentials AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_DEFAULT_REGION in case it is not locally saved.
 
 ## Lambda Prediction
 
