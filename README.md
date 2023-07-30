@@ -103,7 +103,7 @@ This is a preliminary check-list for the peer-to-peer review:
 - :white_check_mark: **Cloud**: The project is developed on the cloud and IaC tools are used for provisioning the infrastructure
 - :white_check_mark: **Experiment tracking and model registry**: Both experiment tracking and model registry are used
 - :white_check_mark: **Workflow orchestration**: Fully deployed workflow
-- :white_check_mark: **Model deployment**: The model deployment code is containerized and ca be deployed to cloud
+- :white_check_mark: **Model deployment**: The model deployment code is containerized and can be deployed to cloud
 - :white_check_mark: **Model monitoring**: Basic model monitoring that calculates and reports metrics
 - :white_check_mark: **Reproducibility**: Instructions are clear, it's easy to run the code, and it works. The versions for all the dependencies are specified.
 - :white_check_mark:**Best practices**:
@@ -112,5 +112,3 @@ This is a preliminary check-list for the peer-to-peer review:
     * [X] Linter and code formatter are used
     * [X] There is a Makefile
     * [X] Thereis a CI/CD pipeline
-
-    
