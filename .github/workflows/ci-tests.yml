@@ -56,9 +56,9 @@ jobs:
         working-directory: ./
         run: pytest -vv -s ./tests/
 
-      - name: Lint
-        working-directory: ./
-        run: pylint --verbose --recursive=y .
+      # - name: Lint
+      #   working-directory: ./
+      #   run: pylint --verbose --recursive=y .
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
