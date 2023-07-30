@@ -2,9 +2,8 @@
 
 import os
 import json
-from typing import Dict, Any, Callable
-import boto3
 import base64
+import boto3
 import mlflow.pyfunc
 import pandas as pd
 from dotenv import load_dotenv
