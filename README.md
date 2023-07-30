@@ -97,7 +97,7 @@ The entire project was developed using **Anaconda Powershell Prompt**, so some o
 
 ## Project Check List Review
 
-This is a preliminary check-list for the peer-to-peer review.
+This is a preliminary check-list for the peer-to-peer review:
 
 - :white_check_mark: **Problem description**: The problem is well described and it's clear what the problem the project solves
 - :white_check_mark: **Cloud**: The project is developed on the cloud and IaC tools are used for provisioning the infrastructure
