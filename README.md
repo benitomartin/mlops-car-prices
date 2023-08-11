@@ -49,7 +49,7 @@ The project has been structured with the following folders and files:
 
 The dataset was obtained from Kaggle and contains various columns with car details and prices. To prepare the data for modeling, an **Exploratory Data Analysis** was conducted to preprocess numerical and categorical features, and suitable scalers and encoders were chosen for the preprocessing pipeline. Subsequently, a **GridSearch** was performed to select the best regression models, with RandomForestRegressor and GradientBoostingRegressor being the top performers, achieving an R2 value of approximately 0.9.
 
-<p>
+<p align="center">
     <img src="/integration_tests/results_printouts/notebook.png"/>
     </p>
 <p>
