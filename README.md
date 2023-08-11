@@ -4,7 +4,7 @@
     <img src="/integration_tests/results_printouts/Money-car.jpg"/>
     </p>
 
-This project is currently being evaluated as part [MLOps Zoomcamp](https://github.com/DataTalksClub/mlops-zoomcamp) course provided by [DataTalks.Club](https://datatalks.club/).
+This project has been developed as part of the [MLOps Zoomcamp](https://github.com/DataTalksClub/mlops-zoomcamp) course provided by [DataTalks.Club](https://datatalks.club/).
 
 The dataset used has been downloaded from [Kaggle](https://www.kaggle.com/datasets/hellbuoy/car-price-prediction) and a preliminary data analysis was performed (see [notebooks](/notebooks) folder), to get some insights for the further project development.
 
@@ -36,7 +36,7 @@ The project has been structured with the following folders and files:
 - `data:` dataset and test sample for testing the model
 - `integration_tests:` prediction integration test with docker-compose
 - `lambda:` test of the lambda handler with and w/o docker
-- `model:` full pipeline from preprocessing till prediction and monitoring using MLflow, Prefect, Grafana, Adminer and docker-compose
+- `model:` full pipeline from preprocessing to prediction and monitoring using MLflow, Prefect, Grafana, Adminer, and docker-compose
 - `notebooks:` EDA and Modeling performed at the beginning of the project to establish a baseline
 - `tests:` unit tests
 - `terraform:` IaC stream-based pipeline infrastructure in AWS using Terraform
@@ -56,7 +56,7 @@ The dataset was obtained from Kaggle and contains various columns with car detai
     <img src="/model/results_printouts/grafana_dashboard.png"/>
     </p>
 
-Afterwards, the models underwent testing, model registry and deployment using **MLflow**, **Prefect** and **Flask**. Monitoring of the models was established through **Grafana** and **Adminer** Database. Subsequently, a project infrastructure was set up in **Terraform**, utilizing **AWS** modules such as Kinesis Streams (Producer & Consumer), Lambda (Serving API), S3 Bucket (Model artifacts), and ECR (Image Registry).
+Afterward, the models underwent testing, model registry, and deployment using **MLflow**, **Prefect**, and **Flask**. Monitoring of the models was established through **Grafana** and **Adminer** Database. Subsequently, a project infrastructure was set up in **Terraform**, utilizing **AWS** modules such as Kinesis Streams (Producer & Consumer), Lambda (Serving API), S3 Bucket (Model artifacts), and ECR (Image Registry).
 
 <p>
     <img src="/model/results_printouts/Deployment Prefect UI.png"/>
@@ -75,7 +75,7 @@ Finally, to streamline the development process, a fully automated **CI/CD** pipe
 
 The Python version used for this project is Python 3.9.
 
-1. Clone the repo (or download as zip):
+1. Clone the repo (or download as zip file):
 
    ```bash
    git clone https://github.com/benitomartin/mlops-car-prices.git
@@ -107,11 +107,11 @@ Each project folder contains a **README.md** file with instructions about how to
 
 The entire project was developed using **Anaconda Powershell Prompt**, so some of the commands and configurations provided in this context may not be directly applicable to other shells. Please be aware of this when attempting to replicate the project in a different shell environment.
 
-## Project Check List Review
+## Project Best Practices
 
-This is a preliminary check-list for the peer-to-peer review:
+The following best practices were implemented:
 
-- :white_check_mark: **Problem description**: The problem is well described and it's clear what the problem the project solves
+- :white_check_mark: **Problem description**: The project is well described and it's clear udn understandable
 - :white_check_mark: **Cloud**: The project is developed on the cloud and IaC tools are used for provisioning the infrastructure
 - :white_check_mark: **Experiment tracking and model registry**: Both experiment tracking and model registry are used
 - :white_check_mark: **Workflow orchestration**: Fully deployed workflow
@@ -123,4 +123,4 @@ This is a preliminary check-list for the peer-to-peer review:
     * [X] There is an integration test
     * [X] Linter and code formatter are used
     * [X] There is a Makefile
-    * [X] Thereis a CI/CD pipeline
+    * [X] There is a CI/CD pipeline
