@@ -70,6 +70,7 @@ Finally, to streamline the development process, a fully automated **CI/CD** pipe
 <p>
     <img src="/integration_tests/results_printouts/CICD.png"/>
     </p>
+    
 ## Project Set Up
 
 The Python version used for this project is Python 3.9.
