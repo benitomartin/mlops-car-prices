@@ -6,7 +6,7 @@
 
 This project is currently being evaluated as part [MLOps Zoomcamp](https://github.com/DataTalksClub/mlops-zoomcamp) course provided by [DataTalks.Club](https://datatalks.club/).
 
-The dataset used has been downloaded from [Kaggle](https://www.kaggle.com/datasets/hellbuoy/car-price-prediction) and a preliminary data analysis was performed (see [notebooks](https://github.com/benitomartin/mlops-car-prices/tree/main/notebooks) folder), to get some insights for the further project development.
+The dataset used has been downloaded from [Kaggle](https://www.kaggle.com/datasets/hellbuoy/car-price-prediction) and a preliminary data analysis was performed (see [notebooks](/notebooks) folder), to get some insights for the further project development.
 
 Below you can find some instructions to understand the project content and at the end of this file a check list for the peer-to-peer review. Feel free to clone this repo :wink:
 
@@ -68,7 +68,7 @@ Afterwards, the models underwent testing, model registry and deployment using **
 Finally, to streamline the development process, a fully automated **CI/CD** pipeline was created using GitHub Actions.
 
 <p>
-    <img src="/integration_tests/results_printouts/CICD"/>
+    <img src="/integration_tests/results_printouts/CICD.png"/>
     </p>
 ## Project Set Up
 
