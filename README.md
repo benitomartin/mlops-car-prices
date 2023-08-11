@@ -105,7 +105,6 @@ The Python version used for this project is Python 3.9.
 
 Each project folder contains a **README.md** file with instructions about how to run the code. I highly recommend creating a virtual environment for each one. Additionally, please note that an **AWS Account**, credentials, and proper policies with full access to EC2, S3, ECR, Lambda, and Kinesis are necessary for the projects to function correctly. Make sure to configure the appropriate credentials to interact with AWS services.
 
-The entire project was developed using **Anaconda Powershell Prompt**, so some of the commands and configurations provided in this context may not be directly applicable to other shells. Please be aware of this when attempting to replicate the project in a different shell environment.
 
 ## Project Best Practices
 
