@@ -1,8 +1,10 @@
 # MLOps Project Car Prices Prediction
 
-![car](https://github.com/benitomartin/templates/assets/116911431/d5d98b26-f096-42bf-b97d-d2fefdebe555)
+<p>
+    <img src="/integration_tests/results_printouts/Money-car.jpg"/>
+    </p>
 
-This project is currently being evaluated as part [MLOps Zoomcamp](https://github.com/DataTalksClub/mlops-zoomcamp) course provided by [DataTalks](https://datatalks.club/).Club.
+This project is currently being evaluated as part [MLOps Zoomcamp](https://github.com/DataTalksClub/mlops-zoomcamp) course provided by [DataTalks.Club](https://datatalks.club/).
 
 The dataset used has been downloaded from [Kaggle](https://www.kaggle.com/datasets/hellbuoy/car-price-prediction) and a preliminary data analysis was performed (see [notebooks](https://github.com/benitomartin/mlops-car-prices/tree/main/notebooks) folder), to get some insights for the further project development.
 
@@ -32,10 +34,10 @@ The project has been structured with the following folders and files:
 
 - `.github:` contains the CI/CD files (GitHub Actions)
 - `data:` dataset and test sample for testing the model
-- `integration_tests:` prediction integration test with docker compose
-- `lamdba:` test of the lambda handler with and w/o docker
-- `model:` full pipeline from preporcessing till prediction and monitoring using MLflow, Prefect, Grafana, Adminer and docker compose
-- `notebooks:` EDA and Modeling performed at the beginning of the project to stablish a baseline
+- `integration_tests:` prediction integration test with docker-compose
+- `lambda:` test of the lambda handler with and w/o docker
+- `model:` full pipeline from preprocessing till prediction and monitoring using MLflow, Prefect, Grafana, Adminer and docker-compose
+- `notebooks:` EDA and Modeling performed at the beginning of the project to establish a baseline
 - `tests:` unit tests
 - `terraform:` IaC stream-based pipeline infrastructure in AWS using Terraform
 - `Makefile:` set of execution tasks
@@ -47,7 +49,9 @@ The project has been structured with the following folders and files:
 
 The dataset was obtained from Kaggle and contains various columns with car details and prices. To prepare the data for modeling, an **Exploratory Data Analysis** was conducted to preprocess numerical and categorical features, and suitable scalers and encoders were chosen for the preprocessing pipeline. Subsequently, a **GridSearch** was performed to select the best regression models, with RandomForestRegressor and GradientBoostingRegressor being the top performers, achieving an R2 value of approximately 0.9.
 
-![notebook](https://github.com/benitomartin/mlops-car-prices/assets/116911431/cbaccce2-e3ed-4480-a715-3060d56465af)
+<p>
+    <img src="/integration_tests/results_printouts/notebook.png"/>
+    </p>
 <p>
     <img src="/model/results_printouts/grafana_dashboard.png"/>
     </p>
@@ -63,8 +67,9 @@ Afterwards, the models underwent testing, model registry and deployment using **
 
 Finally, to streamline the development process, a fully automated **CI/CD** pipeline was created using GitHub Actions.
 
-![test github](https://github.com/benitomartin/mlops-car-prices/assets/116911431/0d9e4858-8745-4bb1-bb1c-a6431b98cc98)
-
+<p>
+    <img src="/integration_tests/results_printouts/CICD"/>
+    </p>
 ## Project Set Up
 
 The Python version used for this project is Python 3.9.
