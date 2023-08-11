@@ -8,7 +8,7 @@ This project has been developed as part of the [MLOps Zoomcamp](https://github.c
 
 The dataset used has been downloaded from [Kaggle](https://www.kaggle.com/datasets/hellbuoy/car-price-prediction) and a preliminary data analysis was performed (see [notebooks](/notebooks) folder), to get some insights for the further project development.
 
-Below you can find some instructions to understand the project content and at the end of this file a check list for the peer-to-peer review. Feel free to clone this repo :wink:
+Below you can find some instructions to understand the project content. Feel free to clone this repo :wink:
 
 ## Tech Stack
 
