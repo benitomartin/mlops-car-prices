@@ -75,7 +75,7 @@ Finally, to streamline the development process, a fully automated **CI/CD** pipe
 
 The Python version used for this project is Python 3.9.
 
-1. Clone the repo (or download as zip file):
+1. Clone the repo (or download it as a zip file):
 
    ```bash
    git clone https://github.com/benitomartin/mlops-car-prices.git
@@ -114,12 +114,12 @@ The following best practices were implemented:
 - :white_check_mark: **Cloud**: The project is developed on the cloud and IaC tools are used for provisioning the infrastructure
 - :white_check_mark: **Experiment tracking and model registry**: Both experiment tracking and model registry are used
 - :white_check_mark: **Workflow orchestration**: Fully deployed workflow
-- :white_check_mark: **Model deployment**: The model deployment code is containerized and can be deployed to cloud
+- :white_check_mark: **Model deployment**: The model deployment code is containerized and can be deployed to the cloud
 - :white_check_mark: **Model monitoring**: Basic model monitoring that calculates and reports metrics
 - :white_check_mark: **Reproducibility**: Instructions are clear, it's easy to run the code, and it works. The versions for all the dependencies are specified.
 - :white_check_mark:**Best practices**:
     * [X] There are unit tests
     * [X] There is an integration test
-    * [X] Linter and code formatter are used
+    * [X] Linter and code formatting are used
     * [X] There is a Makefile
     * [X] There is a CI/CD pipeline
