@@ -53,4 +53,5 @@ Then follow the next steps:
 
 - The result shall be visible in AWS CloudWatch:
 
-  ![manual_deploy_cloudwatch2](https://github.com/benitomartin/mlops-car-prices/assets/116911431/6c860c98-dd24-4d23-bf16-7e9077557716)
+![Alt Text](results_printouts/manual_deploy_cloudwatch2.png)
+
