@@ -110,7 +110,7 @@ Each project folder contains a **README.md** file with instructions about how to
 
 The following best practices were implemented:
 
-- :white_check_mark: **Problem description**: The project is well described and it's clear udn understandable
+- :white_check_mark: **Problem description**: The project is well described and it's clear and understandable
 - :white_check_mark: **Cloud**: The project is developed on the cloud and IaC tools are used for provisioning the infrastructure
 - :white_check_mark: **Experiment tracking and model registry**: Both experiment tracking and model registry are used
 - :white_check_mark: **Workflow orchestration**: Fully deployed workflow
